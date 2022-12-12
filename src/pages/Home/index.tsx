@@ -6,6 +6,7 @@ import bannerHome from "../../assets/banner-home.png";
 import imageBioBottom from "../../assets/image-bio-bottom.png";
 import imageBioTop from "../../assets/image-bio-top.png";
 import logoHome from "../../assets/logo-home.png";
+import { Caroussel } from "../../components/Caroussel";
 import { Navegation } from "../../components/Navegation";
 
 export function Home() {
@@ -23,7 +24,7 @@ export function Home() {
           <Img src={imageBioTop} w="100%" h="45vh" />
           <Img src={imageBioBottom} w="100%" h="45vh" />
         </Stack>
-        <Stack w="100%" h="80vh" alignItems="center">
+        <Stack w="100%" alignItems="center">
           <Box maxW="600px" w="100%">
             <Text fontSize="4.5rem" lineHeight="4.5rem" fontWeight="900" maxW="300px" w="100%">
               Sobre mim
@@ -37,6 +38,9 @@ export function Home() {
             </Text>
           </Box>
         </Stack>
+      </HStack>
+      <HStack id="time-line" w="calc(100% - 20px)" m="0 !important" padding="20px">
+        <Caroussel />
       </HStack>
     </Box>
   );
