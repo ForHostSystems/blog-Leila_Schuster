@@ -26,8 +26,8 @@ export function Home() {
           <Img src={imageBioTop} maxW="712.55px" />
           <Img src={imageBioBottom} maxW="712.55px" />
         </Stack>
-        <Stack w="34%" gap={10} mt={20}>
-          <VStack align="start">
+        <Stack w="34%" gap={10}>
+          <VStack align="start" mt={10}>
             <Box w="40px" h="6px" bg="black" ml="2px" />
             <Heading as="h1" fontSize="4.5rem" lineHeight="4rem" fontWeight={900}>
               Sobre
@@ -44,9 +44,10 @@ export function Home() {
           </Flex>
         </Stack>
       </HStack>
-      <HStack id="time-line" w="calc(100% - 20px)" m="0">
+      <VStack id="time-line" w="100%" mt={20}>
+        <Heading mb={10}>Momentos marcantes</Heading>
         <Caroussel />
-      </HStack>
+      </VStack>
     </Layout>
   );
 }

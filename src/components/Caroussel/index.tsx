@@ -1,21 +1,40 @@
 import React from "react";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { Box } from "@chakra-ui/react";
-import { LeftButton, RightButton, Provider, Carousel } from "chakra-ui-carousel";
+import { Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./styles.css";
 
 export const Caroussel = () => {
   return (
-    <Box w="100%">
-      <Provider>
-        <Carousel gap={50}>
-          <div>one</div>
-          <div>two</div>
-          <div>three</div>
-        </Carousel>
-        <LeftButton customIcon={<ArrowLeftIcon />} />
-        <RightButton customIcon={<ArrowRightIcon />} />
-      </Provider>
-    </Box>
+    <Swiper
+      slidesPerView={4}
+      spaceBetween={0}
+      slidesPerGroup={4}
+      loop={true}
+      loopFillGroupWithBlank={true}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Navigation]}
+      className="mySwiper">
+      <SwiperSlide>
+        <Box w="330px" h="330px" bg="red"></Box>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Box w="330px" h="330px" bg="green"></Box>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Box w="330px" h="330px" bg="blue"></Box>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Box w="330px" h="330px" bg="black"></Box>
+      </SwiperSlide>
+    </Swiper>
   );
 };
