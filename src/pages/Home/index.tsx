@@ -8,8 +8,8 @@ import { Biography } from "../../components/Biography";
 import { CustomCaroussel } from "../../components/CustomCaroussel";
 import { Layout } from "../../components/Layout";
 import { Navegation } from "../../components/Navegation";
-
-const mockSlides = ["#696969", "#708090", "#BEBEBE", "#6495ED", "#00FFFF", "#006400", "#7CFC00", "#FF4500"];
+import { Tricks } from "../../components/Tricks";
+import { mockedSlides } from "../../mocks/mockedSlides";
 
 export function Home() {
   return (
@@ -23,10 +23,13 @@ export function Home() {
         </Stack>
       </SimpleGrid>
       <Biography />
-      <VStack id="time-line" w="100%" mt={20}>
-        <Heading mb={10}>Momentos marcantes</Heading>
-        <CustomCaroussel slides={mockSlides} />
+      <VStack id="time-line" w="100%" mt={28}>
+        <Heading mb={10} fontSize="3.3rem">
+          Momentos marcantes
+        </Heading>
+        <CustomCaroussel slides={mockedSlides} />
       </VStack>
+      <Tricks />
     </Layout>
   );
 }

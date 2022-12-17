@@ -14,6 +14,12 @@ const breakpoints = {
   "2xl": "1920px",
 };
 
+const fonts = {
+  heading: "Urbanist",
+  body: "Urbanist",
+  mono: "Urbanist",
+};
+
 const styles = {
   global: {
     "*": {
@@ -24,7 +30,7 @@ const styles = {
     "html, body, #root": {
       width: "100%",
       height: "100%",
-      "scroll-behavior": "smooth",
+      scrollBehavior: "smooth",
     },
   },
 };
@@ -32,5 +38,6 @@ const styles = {
 export const theme = extendTheme({
   colors,
   breakpoints,
+  fonts,
   styles,
 });
