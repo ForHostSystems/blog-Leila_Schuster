@@ -1,3 +1,4 @@
+import logoGoWhere from "../assets/logo_revistar_gowhere.png";
 import logoRegional from "../assets/logotipo_revista_regional.png";
 import pdf from "../assets/Manual_de_Marca_Leila_Schuster.pdf";
 
@@ -13,7 +14,7 @@ export const mockedTrics = [
     title: "Go Lifestyle",
     revue: "Revista Go Where",
     edition: "Edição n° xxx - 00/00",
-    logo: logoRegional,
+    logo: logoGoWhere,
     revuePreview: pdf,
   },
 ];

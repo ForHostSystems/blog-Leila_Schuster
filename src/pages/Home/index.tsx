@@ -4,7 +4,8 @@ import { Box, Heading, Img, Stack, VStack, SimpleGrid } from "@chakra-ui/react";
 
 import bannerHome from "../../assets/banner-home.png";
 import logoHome from "../../assets/logo-home.png";
-import { Biography } from "../../components/Biography";
+import { BiographyPreview } from "../../components/BiographyPreview";
+import { BlogPreview } from "../../components/BlogPreview";
 import { CustomCaroussel } from "../../components/CustomCaroussel";
 import { Layout } from "../../components/Layout";
 import { Navegation } from "../../components/Navegation";
@@ -22,14 +23,15 @@ export function Home() {
           <Box visibility="hidden" />
         </Stack>
       </SimpleGrid>
-      <Biography />
-      <VStack id="time-line" w="100%" mt={28}>
+      <BiographyPreview />
+      <VStack as="section" id="time-line" w="100%" mt={28}>
         <Heading mb={10} fontSize="3.3rem">
           Momentos marcantes
         </Heading>
         <CustomCaroussel slides={mockedSlides} />
       </VStack>
       <Tricks />
+      <BlogPreview />
     </Layout>
   );
 }
