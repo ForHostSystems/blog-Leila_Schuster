@@ -8,7 +8,7 @@ import { Title } from "../Title";
 
 export const BlogPreview = () => {
   return (
-    <Flex as="section" direction="column" align="start" mt={28} w="100%">
+    <Flex as="section" direction="column" align="start" mt={52} w="100%">
       <Heading as="h1" fontSize="6rem" fontWeight={900} color="black" mb={20}>
         Blog
       </Heading>

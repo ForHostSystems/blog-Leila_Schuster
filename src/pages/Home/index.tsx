@@ -9,6 +9,7 @@ import { BlogPreview } from "../../components/BlogPreview";
 import { CustomCaroussel } from "../../components/CustomCaroussel";
 import { Layout } from "../../components/Layout";
 import { Navegation } from "../../components/Navegation";
+import { Partners } from "../../components/Partners";
 import { Tricks } from "../../components/Tricks";
 import { mockedSlides } from "../../mocks/mockedSlides";
 
@@ -32,6 +33,7 @@ export function Home() {
       </VStack>
       <Tricks />
       <BlogPreview />
+      <Partners />
     </Layout>
   );
 }

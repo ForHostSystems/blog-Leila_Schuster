@@ -1,4 +1,4 @@
-import slide1 from "../assets/1993-Miss_BR.jpg";
+import slide1 from "../assets/1993-Miss_BR.png";
 import slide2 from "../assets/1994-Modelo.jpeg";
 import slide5 from "../assets/2001-Beleza_de_mulher.png";
 import slide6 from "../assets/2005-workshop.jpeg";
