@@ -11,11 +11,11 @@ export const CustomButton = ({ children }: CustomButtonProps) => {
   return (
     <Button
       alignSelf="center"
-      fontSize="2.5rem"
+      fontSize={{ lg: "2rem", xl: "2.5rem" }}
       fontWeight={300}
       bg="none"
-      h="80px"
-      px={12}
+      h={{ lg: "60px", xl: "80px" }}
+      px={10}
       mt="4rem !important"
       pos="relative"
       _hover={{ bg: "none" }}
@@ -37,7 +37,7 @@ export const CustomButton = ({ children }: CustomButtonProps) => {
           left: 0,
           top: 0,
           w: "2px",
-          h: hover ? "80px" : "40px",
+          h: hover ? { lg: "60px", xl: "80px" } : "40px",
           bg: "blackAlpha.500",
         }}
         transition="0.3s"
@@ -56,7 +56,7 @@ export const CustomButton = ({ children }: CustomButtonProps) => {
           right: 0,
           bottom: 0,
           w: "2px",
-          h: hover ? "80px" : "40px",
+          h: hover ? { lg: "60px", xl: "80px" } : "40px",
           bg: "blackAlpha.500",
         }}
         transition="0.3s"

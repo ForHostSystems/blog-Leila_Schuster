@@ -7,6 +7,7 @@ import logoHome from "../../assets/logo-home.png";
 import { BiographyPreview } from "../../components/BiographyPreview";
 import { BlogPreview } from "../../components/BlogPreview";
 import { CustomCaroussel } from "../../components/CustomCaroussel";
+import { Footer } from "../../components/Footer";
 import { Layout } from "../../components/Layout";
 import { Navegation } from "../../components/Navegation";
 import { Partners } from "../../components/Partners";
@@ -33,7 +34,10 @@ export function Home() {
       </VStack>
       <Tricks />
       <BlogPreview />
-      <Partners />
+      <Box my={52} w="100%">
+        <Partners />
+      </Box>
+      <Footer />
     </Layout>
   );
 }

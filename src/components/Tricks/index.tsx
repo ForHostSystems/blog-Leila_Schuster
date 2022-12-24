@@ -22,14 +22,14 @@ export const Tricks = () => {
         <Img src={logoLS} alt="Logo Leila Schuster (LS)" w="250px" ml={-10} />
       </Flex>
       {mockedTrics.map((value, index) => (
-        <Flex w="100%" align="center" key={index} _last={{ mt: 56 }}>
+        <Flex w="100%" align="center" justify="space-between" key={index} _last={{ mt: 56 }}>
           <VStack gap={20} w="42%" order={index}>
             <Flex direction="column" align="center">
-              <Heading color="black" fontSize="5rem">
+              <Heading color="black" fontSize={{ lg: "4.5rem", xl: "5rem" }}>
                 {value.title}
               </Heading>
-              <Text fontSize="2.7rem">{value.revue}</Text>
-              <Text fontSize="2rem" mt={3}>
+              <Text fontSize={{ lg: "2.4rem", xl: "2.7rem" }}>{value.revue}</Text>
+              <Text fontSize={{ lg: "1.7rem", xl: "2rem" }} mt={3}>
                 {value.edition}
               </Text>
             </Flex>
@@ -55,7 +55,7 @@ export const Tricks = () => {
                 bottom={0}
                 _before={{ content: '""', pos: "absolute", right: 0, bottom: 0, w: "2px", h: "40px", bg: "blackAlpha.500" }}
               />
-              <Img src={value.logo} alt="logo revista regional (Regional)" w="280px" />
+              <Img src={value.logo} alt="logo revista regional (Regional)" w={{ lg: "250px", xl: "280px" }} />
             </Box>
           </VStack>
 

@@ -24,9 +24,17 @@ export const CustomCaroussel = ({ slides }: CustomCarousselProps) => {
   return (
     <Box w="100%" pos="relative">
       <Swiper
-        slidesPerView={4}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+          },
+          1440: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+          },
+        }}
         spaceBetween={0}
-        slidesPerGroup={4}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -49,9 +57,15 @@ export const CustomCaroussel = ({ slides }: CustomCarousselProps) => {
                 {value.year}
               </Text>
               {value.image != null ? (
-                <Img src={value.image} alt={value.description} w="330px" h="330px" objectFit="cover" />
+                <Img
+                  src={value.image}
+                  alt={value.description}
+                  w={{ lg: "310px", xl: "330px" }}
+                  h={{ lg: "310px", xl: "330px" }}
+                  objectFit="cover"
+                />
               ) : (
-                <Box w="330px" h="330px" bg="green.300" />
+                <Box w={{ lg: "310px", xl: "330px" }} h={{ lg: "310px", xl: "330px" }} bg="green.300" />
               )}
               <Text color="black">{value.description}</Text>
             </VStack>
