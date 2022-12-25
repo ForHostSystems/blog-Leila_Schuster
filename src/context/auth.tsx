@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (token != null && userStorage != null) {
       setAuthenticated(true);
       setUser(JSON.parse(userStorage));
+      setUser(JSON.parse(userStorage));
       api.interceptors.request.use(async (req) => {
         if (req.headers != null) {
           req.headers.Authorization = `Bearer ${token}`;
