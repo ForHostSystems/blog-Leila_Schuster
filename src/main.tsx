@@ -1,3 +1,9 @@
+import "@fontsource/urbanist/100.css";
+import "@fontsource/urbanist/300.css";
+import "@fontsource/urbanist/500.css";
+import "@fontsource/urbanist/800.css";
+import "@fontsource/urbanist/900.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClientProvider } from "react-query";
