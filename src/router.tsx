@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/auth";
 import { Home } from "./pages/Home";
@@ -7,14 +7,14 @@ import { Login } from "./pages/Login";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <Routes>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
