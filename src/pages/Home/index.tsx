@@ -13,7 +13,7 @@ import { Navegation } from "../../components/Navegation";
 import { Partners } from "../../components/Partners";
 import { Tricks } from "../../components/Tricks";
 import { mockedSlides } from "../../mocks/mockedSlides";
-// redeploy
+
 export function Home() {
   return (
     <Layout>
