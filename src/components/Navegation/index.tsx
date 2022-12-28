@@ -9,7 +9,7 @@ export const Navegation = () => {
         <Link href="#home" textDecoration="none !important" fontWeight="700">
           HOME
         </Link>
-        <Link href="#biografia" textDecoration="none !important" fontWeight="700">
+        <Link href="/biografia" textDecoration="none !important" fontWeight="700">
           BIOGRAFIA
         </Link>
         <Link href="#dicas" textDecoration="none !important" fontWeight="700">

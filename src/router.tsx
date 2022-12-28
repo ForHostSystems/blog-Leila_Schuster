@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/auth";
+import { Biography } from "./pages/Biography";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 
@@ -11,6 +12,7 @@ const Router = () => {
       <AuthProvider>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/biografia" element={<Biography />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </AuthProvider>
