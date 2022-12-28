@@ -12,7 +12,7 @@ export const Layout = ({ children }: LayoutProps) => {
   const { sm, md, lg, xl } = theme.breakpoints;
   return (
     <Flex w="100%" direction="column" justify="center" align="center" bg="background">
-      <Box w="100%" maxW={{ sm, md, lg, xl }} p="20px">
+      <Box w="100%" minH="100vh" maxW={{ sm, md, lg, xl }} p="20px">
         {children}
       </Box>
     </Flex>
