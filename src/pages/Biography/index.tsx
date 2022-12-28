@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Divider } from "@chakra-ui/react";
+import { Divider } from "@chakra-ui/react";
 
 import { BiographyContent } from "../../components/BiographyContent";
 import { BiographyHeader } from "../../components/BiographyHeader";
