@@ -8,7 +8,7 @@ import bio_image3 from "../../assets/bio_image3.png";
 
 export const BiographyContent = () => {
   return (
-    <SimpleGrid w="100%" columns={2} spacing={14} mt={14}>
+    <SimpleGrid w="100%" columns={2} spacing={14} mt={14} mb={52}>
       <VStack gap={{ lg: 10, xl: 20 }}>
         <Img src={bio_image1} w="100%" />
         <Box>
