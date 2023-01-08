@@ -12,11 +12,7 @@ export const Partners = () => {
         Parceiros
       </Title>
 
-      <HStack
-        w={{ lg: "calc(100% - (2.5rem + 40px))", xl: "calc(100% - (4rem + 40px))" }}
-        justify="space-between"
-        mt={36}
-        ml={{ lg: 10, xl: 16 }}>
+      <HStack w="100%" gap={32} justify="center" mt={20}>
         {mockedPartners.map((value, index) => (
           <HStack w={{ lg: "200px", xl: "250px" }} key={index}>
             <Img w="100%" src={value} filter="grayscale(100%)" />
