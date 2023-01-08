@@ -27,13 +27,12 @@ export const CustomCaroussel = ({ slides }: CustomCarousselProps) => {
         breakpoints={{
           1024: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
           },
           1440: {
             slidesPerView: 4,
-            slidesPerGroup: 4,
           },
         }}
+        slidesPerGroup={1}
         spaceBetween={0}
         autoplay={{
           delay: 2500,

@@ -28,7 +28,7 @@ export function Home() {
       <BiographyPreview />
       <VStack as="section" id="time-line" w="100%" mt={28}>
         <Heading mb={10} fontSize="3.3rem">
-          Momentos marcantes
+          momentos marcantes
         </Heading>
         <CustomCaroussel slides={mockedSlides} />
       </VStack>
