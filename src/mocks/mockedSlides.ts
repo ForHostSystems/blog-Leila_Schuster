@@ -1,9 +1,17 @@
 import slide1 from "../assets/1993-Miss_BR.png";
 import slide2 from "../assets/1994-Modelo.jpeg";
+import slide3 from "../assets/1996-nascimento_filho.jpg";
+import slide4 from "../assets/2000-jornalismo.png";
 import slide5 from "../assets/2001-Beleza_de_mulher.png";
 import slide6 from "../assets/2005-workshop.jpeg";
 import slide7 from "../assets/2006-grife_Miss_Schuster.png";
 import slide8 from "../assets/2007-Marangoni_Curso.jpeg";
+import slide9 from "../assets/2008-comentarista.jpg";
+import slide10 from "../assets/2009-casamento.png";
+import slide11 from "../assets/2011-Inauguração_Atelie.jpg";
+import slide12 from "../assets/2013-Amaury_Jr.jpg";
+import slide13 from "../assets/2018-gastronomia.jpg";
+import slide14 from "../assets/2022-logos-revistas.png";
 
 export const mockedSlides = [
   {
@@ -18,12 +26,12 @@ export const mockedSlides = [
   },
   {
     year: "1996",
-    image: null,
+    image: slide3,
     description: "Nascimento de meu filho Klaus",
   },
   {
     year: "2000",
-    image: null,
+    image: slide4,
     description: "Graduação em Jornalismo",
   },
   {
@@ -48,32 +56,32 @@ export const mockedSlides = [
   },
   {
     year: "2008",
-    image: null,
+    image: slide9,
     description: "Comentarista Miss Universo",
   },
   {
     year: "2009",
-    image: null,
+    image: slide10,
     description: "Casamento",
   },
   {
     year: "2011",
-    image: null,
+    image: slide11,
     description: "Inauguração do atelier Miss Schuster em Itu",
   },
   {
     year: "2013",
-    image: null,
+    image: slide12,
     description: "Quadro Lifestyle Programa Amaury Jr",
   },
   {
     year: "2018",
-    image: null,
+    image: slide13,
     description: "Graduação Gastronomia",
   },
   {
     year: "2022",
-    image: null,
+    image: slide14,
     description: "Colunista revistas Go Where e Regional",
   },
 ];
