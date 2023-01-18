@@ -7,7 +7,7 @@ import { Title } from "../../components/Title";
 
 export const BiographyHeader = () => {
   return (
-    <HStack justify="space-between" mt={20}>
+    <HStack justify="space-between">
       <VStack align="start" gap={4}>
         <Title dashWidth="48px" as="h1" fontSize="5rem" fontWeight={900} ml="4px">
           Biografia
