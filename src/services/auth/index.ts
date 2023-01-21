@@ -17,7 +17,7 @@ export interface LoginOutputDTO {
 const login = async ({ email, password }: LoginInputDTO): Promise<LoginOutputDTO> => {
   const { data } = await api.post("/auth/login", {
     email,
-    password,
+    senha: password,
   });
 
   return data;

@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
       setAuthenticated(true);
+      navigate("/");
     },
   });
 
