@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 
+import { theme } from "@/styles/theme";
 import { Box, Flex } from "@chakra-ui/react";
-
-import { theme } from "../../styles/theme";
 
 interface LayoutProps {
   children: ReactNode;

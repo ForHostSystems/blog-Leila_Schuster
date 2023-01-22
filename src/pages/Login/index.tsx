@@ -1,11 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
+import { Layout } from "@/components/Layout";
+import { useAuth } from "@/context/auth";
 import { Button, Center, Flex, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
 
-import { Layout } from "../../components/Layout";
-import { useAuth } from "../../context/auth";
-
-export const Login = () => {
+export function Login() {
   const { signIn, isLoading } = useAuth();
 
   const [formFields, setFormFields] = useState({
@@ -68,4 +67,4 @@ export const Login = () => {
       </Center>
     </Layout>
   );
-};
+}

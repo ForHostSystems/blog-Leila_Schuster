@@ -1,8 +1,8 @@
 import React from "react";
 
+import { mockedPartners } from "@/mocks/mockedPartners";
 import { HStack, Img } from "@chakra-ui/react";
 
-import { mockedPartners } from "../../mocks/mockedPartners";
 import { Title } from "../Title";
 
 export const Partners = () => {
