@@ -1,8 +1,8 @@
 import React from "react";
 
+import { mockedBlogs } from "@/mocks/mockedBlogs";
 import { Flex, Heading, Img, Text, VStack } from "@chakra-ui/react";
 
-import { mockedBlogs } from "../../mocks/mockedBlogs";
 import { CustomButton } from "../CustomButton";
 import { Title } from "../Title";
 

@@ -1,8 +1,7 @@
 import React from "react";
 
+import { mockedPartners } from "@/mocks/mockedPartners";
 import { Flex, HStack, Img, keyframes, VStack } from "@chakra-ui/react";
-
-import { mockedPartners } from "../../mocks/mockedPartners";
 
 const slideAnimation = keyframes`
   0% {

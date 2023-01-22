@@ -1,18 +1,17 @@
 import React from "react";
 
+import bannerHome from "@/assets/banner-home.png";
+import logoHome from "@/assets/logo-home.png";
+import { BiographyPreview } from "@/components/Biography/BiographyPreview";
+import { BlogPreview } from "@/components/BlogPreview";
+import { CustomCaroussel } from "@/components/CustomCaroussel";
+import { Footer } from "@/components/Footer";
+import { Layout } from "@/components/Layout";
+import { Navegation } from "@/components/Navegation";
+import { Partners } from "@/components/Partners";
+import { TricksPreview } from "@/components/Tricks/TricksPreview";
+import { mockedSlides } from "@/mocks/mockedSlides";
 import { Box, Heading, Img, Stack, VStack, SimpleGrid } from "@chakra-ui/react";
-
-import bannerHome from "../../assets/banner-home.png";
-import logoHome from "../../assets/logo-home.png";
-import { BiographyPreview } from "../../components/BiographyPreview";
-import { BlogPreview } from "../../components/BlogPreview";
-import { CustomCaroussel } from "../../components/CustomCaroussel";
-import { Footer } from "../../components/Footer";
-import { Layout } from "../../components/Layout";
-import { Navegation } from "../../components/Navegation";
-import { Partners } from "../../components/Partners";
-import { Tricks } from "../../components/Tricks";
-import { mockedSlides } from "../../mocks/mockedSlides";
 
 export function Home() {
   return (
@@ -32,7 +31,7 @@ export function Home() {
         </Heading>
         <CustomCaroussel slides={mockedSlides} />
       </VStack>
-      <Tricks />
+      <TricksPreview />
       <BlogPreview />
       <Box my={52} w="100%">
         <Partners />
