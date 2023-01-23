@@ -37,8 +37,8 @@ export const mockedTrics = [
   {
     cover: dicas_img2,
     photo: dicas_img4,
-    title: "Lifestyle",
-    subtitle: "Revista Regional",
+    title: "Go Lifestyle",
+    subtitle: "Revista Go Where",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non turpis lacinia, dapibus ex at, maximus metus. Sed pharetra efficitur luctus. Fusce convallis, lectus eget lobortis condimentum, orci risus tincidunt metus, vel cursus augue tellus eu neque. Quisque tincidunt risus sed.",
     edition: "Edição n° xxxx - 00/00",
