@@ -11,20 +11,38 @@ export const TricksContent = () => {
       {mockedTrics.map((value, index) => (
         <>
           <Flex justify="space-between" bg="whte" gap={5} mt={60} _first={{ mt: 0 }}>
-            <Img src={value.cover} alt="capa de uma revista com a Leila Schuster" w="600px" order={index % 2 == 0 ? 0 : 1} />
+            <Img
+              src={value.cover}
+              alt="capa de uma revista com a Leila Schuster"
+              w={{ lg: "450px", xl: "600px" }}
+              order={index % 2 == 0 ? 0 : 1}
+            />
 
             <Flex align="start">
-              <Img src={value.photo} alt="capa de uma revista com a Leila Schuster" w="250px" h="auto" />
+              <Img
+                src={value.photo}
+                alt="capa de uma revista com a Leila Schuster"
+                w={{ lg: "150px", xl: "250px" }}
+                h="auto"
+                order={index % 2 == 0 ? 0 : 1}
+              />
               <VStack gap={4}>
-                <Box px="7rem" py={2} bg="gray-m">
-                  <Heading color="white" fontSize="4.7rem">
-                    {value.title}
-                  </Heading>
-                  <Text color="white" fontSize="2.67rem" fontWeight={400}>
-                    {value.subtitle}
-                  </Text>
-                </Box>
-                <Text maxW="410px" fontSize="1.5rem" alignSelf="end" lineHeight="1.4rem">
+                <Center flexDirection="column" w={{ lg: "360px", xl: "530px" }} py={2} bg="gray-m">
+                  <Box>
+                    <Heading color="white" fontSize={{ lg: "2.5rem", xl: "3.8rem" }}>
+                      {value.title}
+                    </Heading>
+                    <Text color="white" fontSize={{ lg: "1.5rem", xl: "2.4rem" }} fontWeight={400}>
+                      {value.subtitle}
+                    </Text>
+                  </Box>
+                </Center>
+                <Text
+                  maxW={{ lg: "280px", xl: "410px" }}
+                  fontSize={{ lg: "1.1rem", xl: "1.5rem" }}
+                  alignSelf={index % 2 == 0 ? "end" : "start"}
+                  textAlign={index % 2 == 0 ? "left" : "right"}
+                  lineHeight="1.4rem">
                   {value.description}
                 </Text>
               </VStack>
