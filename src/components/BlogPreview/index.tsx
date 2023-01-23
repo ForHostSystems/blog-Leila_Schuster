@@ -17,7 +17,13 @@ export const BlogPreview = () => {
           <Img src={value.image} w="50%" order={index % 2 == 0 ? 0 : 1} />
 
           <VStack w="50%" justify="center" align="start" textAlign="left">
-            <Title dashWidth="40px" dashMb="12px" fontSize={{ lg: "3rem", xl: "3.5rem" }} fontWeight={500} mb={14}>
+            <Title
+              dashWidth="40px"
+              dashHeigth="7px"
+              dashMb="12px"
+              fontSize={{ lg: "3rem", xl: "3.5rem" }}
+              fontWeight={500}
+              mb={14}>
               {value.title}
             </Title>
             <Heading as="h3" color="black" fontSize={{ lg: "2.3rem", xl: "2.8rem" }} fontWeight={900} mb="10px !important">

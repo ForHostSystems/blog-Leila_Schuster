@@ -8,7 +8,7 @@ import { Title } from "../Title";
 export const Partners = () => {
   return (
     <>
-      <Title dashWidth="48px" as="h1" fontSize="6rem" fontWeight={900} color="black" ml="4px">
+      <Title dashWidth="48px" dashHeigth={"7px"} as="h1" fontSize="6rem" fontWeight={900} color="black" ml="4px">
         Parceiros
       </Title>
 
