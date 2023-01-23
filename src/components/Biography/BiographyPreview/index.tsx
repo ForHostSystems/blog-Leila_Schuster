@@ -14,7 +14,15 @@ export const BiographyPreview = () => {
       </Stack>
       <HStack w="100%" align="start" justify="end">
         <Stack w="90%" gap={10} mt={10}>
-          <Title dashWidth="50px" dashDistance={3} as="h1" fontSize="7rem" lineHeight="6rem" fontWeight={900} ml="10px">
+          <Title
+            dashWidth="50px"
+            dashHeigth="7px"
+            dashDistance={3}
+            as="h1"
+            fontSize="7rem"
+            lineHeight="6rem"
+            fontWeight={900}
+            ml="10px">
             Sobre
             <br />
             mim

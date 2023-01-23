@@ -11,7 +11,7 @@ export const TricksPreview = () => {
   return (
     <VStack as="section" align="start" mt={28} w="100%">
       <Flex mb={20}>
-        <Title dashWidth="48px" as="h1" fontSize="6rem" fontWeight={900} ml="4px">
+        <Title dashWidth="48px" dashHeigth="7px" as="h1" fontSize="6rem" fontWeight={900} ml="4px">
           Dicas
         </Title>
         <Img src={logoLS} alt="Logo Leila Schuster (LS)" w="130px" ml={6} />
