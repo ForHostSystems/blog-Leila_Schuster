@@ -8,7 +8,7 @@ import { Box, Center, Circle, Heading, HStack, SimpleGrid, Text, Flex, Divider }
 export const Footer = () => {
   return (
     <Center
-      w={{ sm: "100vw", xl: "calc(100vw - 20px)" }}
+      w={{ sm: "98.7vw", xl: "calc(100vw - 20px)" }}
       as="footer"
       flexDirection="column"
       bg="black"

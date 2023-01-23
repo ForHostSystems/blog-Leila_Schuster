@@ -14,10 +14,10 @@ export const Navegation = () => {
         <Link href="/biografia" textDecoration="none !important" fontWeight="700">
           BIOGRAFIA
         </Link>
-        <Link href="#dicas" textDecoration="none !important" fontWeight="700">
+        <Link href="/dicas" textDecoration="none !important" fontWeight="700">
           DICAS LS
         </Link>
-        <Link href="#blog" textDecoration="none !important" fontWeight="700">
+        <Link href="/blog" textDecoration="none !important" fontWeight="700">
           BLOG
         </Link>
       </HStack>

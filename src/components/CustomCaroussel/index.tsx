@@ -1,6 +1,7 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+import { TimeLine } from "@/mocks/mockedSlides";
 import { Box, VStack, Text, Img } from "@chakra-ui/react";
 import { Navigation, Autoplay, FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +10,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles.css";
-import { TimeLine } from "../../mocks/mockedSlides";
 
 interface CustomCarousselProps {
   slides: TimeLine;

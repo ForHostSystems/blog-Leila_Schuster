@@ -1,10 +1,9 @@
 import React from "react";
 
+import bio_image1 from "@/assets/bio_image1.png";
+import bio_image2 from "@/assets/bio_image2.png";
+import bio_image3 from "@/assets/bio_image3.png";
 import { Box, Divider, Flex, Heading, Img, SimpleGrid, Text, VStack } from "@chakra-ui/react";
-
-import bio_image1 from "../../assets/bio_image1.png";
-import bio_image2 from "../../assets/bio_image2.png";
-import bio_image3 from "../../assets/bio_image3.png";
 
 export const BiographyContent = () => {
   return (
