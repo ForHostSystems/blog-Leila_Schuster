@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AiFillTag } from "react-icons/ai";
 
 import { MockedBlogContentProps } from "@/mocks/mockedBlogContent";
 import { getFormatedDate } from "@/utils/getFormatedDate";
-import { Box, Flex, Heading, Img, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Img, Text } from "@chakra-ui/react";
 
 import { MostRead } from "../MostRead";
 
@@ -21,7 +21,7 @@ export const BlogContent = ({ content, position }: BlogContentProps) => {
       </Flex>
       <Flex gap={10} w="100%">
         <Box w="70%">
-          <Box w="100%" borderRight={position === 0 ? "1px solid black" : ""}>
+          <Box w="100%" borderRight={position === 0 ? "1px solid #1a1a1a" : ""}>
             <Text fontSize="1rem" lineHeight="1.5rem" fontWeight={700} mt="40px" textTransform="uppercase">
               {getFormatedDate(date)}
             </Text>
@@ -46,17 +46,12 @@ export const BlogContent = ({ content, position }: BlogContentProps) => {
           <Text fontSize="1.25rem" lineHeight="1.75rem" fontWeight={400} mt="20px">
             {description.split("[]")[1]}
           </Text>
-          {images.map(
-            (item, index) =>
-              index === 3 && (
-                <Box key={index}>
-                  <Img src={item.image} w={item.retrate ? "100%" : "48%"} mt="40px" />
-                  <Text fontSize="1rem" lineHeight="1.5rem" fontWeight={700} mt="15px">
-                    {item.legend}
-                  </Text>
-                </Box>
-              ),
-          )}
+          <Box>
+            <Img src={images[3].image} w={images[3].retrate ? "100%" : "48%"} mt="40px" />
+            <Text fontSize="1rem" lineHeight="1.5rem" fontWeight={700} mt="15px">
+              {images[3].legend}
+            </Text>
+          </Box>
           <Flex align="end" gap="5px">
             <Box mr="5px">
               <AiFillTag />

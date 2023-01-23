@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { mockedBlogContent } from "@/mocks/mockedBlogContent";
 import { Box, Img, Text, Flex, Link } from "@chakra-ui/react";
@@ -14,7 +14,7 @@ export const MostRead = () => {
 
       {mockedBlogContent.map(
         (item, index) =>
-          index < mockedBlogContent.length - 3 && (
+          index < 3 && (
             <Flex key={index} mt="30px" gap={2.5}>
               <Box w="115px" h="115px">
                 <Img src={item.images[0].image} alt="" w="100%" h="100%" objectFit="cover" />
