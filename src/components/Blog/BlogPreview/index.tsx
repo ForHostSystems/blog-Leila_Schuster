@@ -1,12 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
+import { CustomButton } from "@/components/CustomButton";
+import { Title } from "@/components/Title";
 import { mockedBlogs } from "@/mocks/mockedBlogs";
 import { Flex, Heading, Img, Text, VStack } from "@chakra-ui/react";
 
-import { CustomButton } from "../CustomButton";
-import { Title } from "../Title";
-
 export const BlogPreview = () => {
+  const navigate = useNavigate();
   return (
     <Flex as="section" direction="column" align="start" mt={52} w="100%">
       <Heading as="h1" fontSize="6rem" fontWeight={900} color="black" mb={20}>
@@ -33,7 +34,7 @@ export const BlogPreview = () => {
               {value.description}
             </Text>
 
-            <CustomButton>LEIA AQUI</CustomButton>
+            <CustomButton onClick={() => navigate("/blog/11")}>LEIA AQUI</CustomButton>
           </VStack>
         </Flex>
       ))}

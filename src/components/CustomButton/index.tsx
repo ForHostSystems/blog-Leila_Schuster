@@ -4,9 +4,10 @@ import { Box, Button } from "@chakra-ui/react";
 
 interface CustomButtonProps {
   children: ReactNode;
+  onClick?: () => void;
 }
 
-export const CustomButton = ({ children }: CustomButtonProps) => {
+export const CustomButton = ({ children, onClick }: CustomButtonProps) => {
   const [hover, setHover] = useState(false);
   return (
     <Button
@@ -21,7 +22,8 @@ export const CustomButton = ({ children }: CustomButtonProps) => {
       _hover={{ bg: "none" }}
       _active={{ bg: "none" }}
       onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}>
+      onMouseLeave={() => setHover(false)}
+      onClick={onClick}>
       {children}
       <Box
         as="span"
