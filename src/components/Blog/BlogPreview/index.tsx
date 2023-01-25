@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { CustomButton } from "@/components/CustomButton";
 import { Title } from "@/components/Title";
+import { mockedBlogContent } from "@/mocks/mockedBlogContent";
 import { mockedBlogs } from "@/mocks/mockedBlogs";
 import { Flex, Heading, Img, Text, VStack } from "@chakra-ui/react";
 
@@ -34,7 +35,12 @@ export const BlogPreview = () => {
               {value.description}
             </Text>
 
-            <CustomButton onClick={() => navigate("/blog/11")}>LEIA AQUI</CustomButton>
+            <CustomButton
+              onClick={() =>
+                navigate(`/blog/${index + 1}`, { state: { blogContent: mockedBlogContent[index != 2 ? index : 0] } })
+              }>
+              LEIA AQUI
+            </CustomButton>
           </VStack>
         </Flex>
       ))}
