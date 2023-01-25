@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
-import { Layout } from "@/components/Layout";
 import { useAuth } from "@/context/auth";
 import { Button, Center, Flex, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
 
@@ -25,7 +24,7 @@ export function Login() {
   };
 
   return (
-    <Layout>
+    <>
       <Center w="100%" h="100vh">
         <Flex w={400} h={500} direction="column" justify="center" align="center" bg="white" boxShadow="lg" borderRadius={7} p={4}>
           <Heading color="black" textDecoration="underline" mb={10}>
@@ -65,6 +64,6 @@ export function Login() {
           </form>
         </Flex>
       </Center>
-    </Layout>
+    </>
   );
 }
