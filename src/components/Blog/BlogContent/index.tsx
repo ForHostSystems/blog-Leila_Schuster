@@ -36,17 +36,17 @@ export const BlogContent = ({ content, isFirst = false, blogOnly = false }: Blog
         </Flex>
         <Flex gap={10} w="100%">
           <Box w="70%">
-            <Box w="100%" borderRight={isFirst ? "1px solid #1a1a1a" : ""}>
+            <Box w="100%" borderRight={isFirst || blogOnly ? "1px solid #1a1a1a" : ""}>
               {!blogOnly && <Presentation />}
               <Text
                 fontSize="1.25rem"
                 lineHeight="1.75rem"
                 fontWeight={400}
                 mt={!blogOnly ? "1.25rem" : "3rem"}
-                pr={isFirst ? "2.5rem" : 0}>
+                pr={isFirst || blogOnly ? "2.5rem" : 0}>
                 {description.split("[]")[0]}
               </Text>
-              <Box pr={isFirst ? "2.5rem" : 0}>
+              <Box pr={isFirst || blogOnly ? "2.5rem" : 0}>
                 <Img src={images[2].image} w={images[2].retrate ? "100%" : "48%"} mt="2.5rem" />
                 <Text fontSize="1rem" lineHeight="1.5rem" fontWeight={700} mt="15px">
                   {images[2].legend}
@@ -73,7 +73,7 @@ export const BlogContent = ({ content, isFirst = false, blogOnly = false }: Blog
               ))}
             </Flex>
           </Box>
-          <Box visibility={isFirst ? "visible" : "hidden"} w="30%">
+          <Box visibility={isFirst || blogOnly ? "visible" : "hidden"} w="30%">
             <MostRead />
           </Box>
         </Flex>
