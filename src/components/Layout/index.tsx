@@ -14,9 +14,9 @@ export const Layout = () => {
   return (
     <Flex w="100%" direction="column" justify="center" align="center" bg="background">
       <Box w="100%" minH="100vh" maxW={{ sm, md, lg, xl }} p="20px">
-        {pathname != "/" && <Header />}
+        {pathname != "/" && pathname != "/login" && <Header />}
         {pathname == "/" ? <Home /> : <Outlet />}
-        <Footer />
+        {pathname != "/" && pathname != "/login" && <Footer />}
       </Box>
     </Flex>
   );
