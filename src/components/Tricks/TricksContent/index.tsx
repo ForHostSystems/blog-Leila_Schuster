@@ -10,7 +10,7 @@ export const TricksContent = () => {
     <Center flexDirection="column" w="100%" mt={10} mb={52}>
       {mockedTrics.map((value, index) => (
         <>
-          <Flex justify="space-between" bg="whte" gap={5} mt={60} _first={{ mt: 0 }}>
+          <Flex key={index} justify="space-between" bg="whte" gap={5} mt={60} _first={{ mt: 0 }}>
             <Img
               src={value.cover}
               alt="capa de uma revista com a Leila Schuster"

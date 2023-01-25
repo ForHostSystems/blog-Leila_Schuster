@@ -18,19 +18,20 @@ export const SeeMore = ({ data }: SeeMoreProps) => {
         </Title>
       </Flex>
       <Flex justify="center" gap="40px">
-        {data.map((item, cont) =>
-          cont >= data.length - 3 ? (
-            <>
-              <Box key={cont} w="200px">
-                <Img src={item.images[0].image} alt="" w="100%" h="250px" />
-                <Link href="#" textDecoration="none !important">
-                  <Text w="90%" mt={4} fontSize="1rem" lineHeight="1.25rem" fontWeight={900} textTransform="uppercase">
-                    {item.title}
-                  </Text>
-                </Link>
-              </Box>
-            </>
-          ) : null,
+        {data.map(
+          (item, cont) =>
+            cont >= 3 && (
+              <>
+                <Box key={cont} w="300px">
+                  <Img src={item.images[0].image} alt="" w="100%" h="350px" />
+                  <Link href="#" textDecoration="none !important">
+                    <Text w="90%" mt={4} fontSize="1rem" lineHeight="1.25rem" fontWeight={900} textTransform="uppercase">
+                      {item.title}
+                    </Text>
+                  </Link>
+                </Box>
+              </>
+            ),
         )}
       </Flex>
     </Box>

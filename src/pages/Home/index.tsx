@@ -3,7 +3,7 @@ import React from "react";
 import bannerHome from "@/assets/banner-home.png";
 import logoHome from "@/assets/logo-home.png";
 import { BiographyPreview } from "@/components/Biography/BiographyPreview";
-import { BlogPreview } from "@/components/BlogPreview";
+import { BlogPreview } from "@/components/Blog/BlogPreview";
 import { CustomCaroussel } from "@/components/CustomCaroussel";
 import { Footer } from "@/components/Footer";
 import { Layout } from "@/components/Layout";
