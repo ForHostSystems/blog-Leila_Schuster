@@ -5,6 +5,7 @@ import logoHome from "@/assets/logo-home.png";
 import { BiographyPreview } from "@/components/Biography/BiographyPreview";
 import { BlogPreview } from "@/components/Blog/BlogPreview";
 import { CustomCaroussel } from "@/components/CustomCaroussel";
+import { LabelForImage } from "@/components/LabelForImage";
 import { Navegation } from "@/components/Navegation";
 import { Partners } from "@/components/Partners";
 import { TricksPreview } from "@/components/Tricks/TricksPreview";
@@ -15,7 +16,7 @@ export function Home() {
   return (
     <>
       <SimpleGrid id="home" columns={2} spacing={5} w="100%">
-        <Img src={bannerHome} />
+        <LabelForImage labelRef="bannerHome" labelWidth="100%" image={bannerHome} />
         <Stack h="100%" direction="column" justify="space-between" alignItems="center" pos="relative">
           <Navegation />
           <Img src={logoHome} />

@@ -2,15 +2,16 @@ import React from "react";
 
 import imageBioBottom from "@/assets/image-bio-bottom.png";
 import imageBioTop from "@/assets/image-bio-top.png";
+import { LabelForImage } from "@/components/LabelForImage";
 import { Title } from "@/components/Title";
-import { Flex, HStack, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Flex, HStack, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 
 export const BiographyPreview = () => {
   return (
     <SimpleGrid as="section" id="biografia" columns={2} spacing={5} w="100%" mt={10}>
-      <Stack gap="15px">
-        <Img src={imageBioTop} maxW="712.55px" />
-        <Img src={imageBioBottom} maxW="712.55px" />
+      <Stack gap="10px">
+        <LabelForImage image={imageBioTop} labelRef="imageBioTop" maxW="690px" />
+        <LabelForImage image={imageBioBottom} labelRef="imageBioBottom" maxW="690px" />
       </Stack>
       <HStack w="100%" align="start" justify="end">
         <Stack w="90%" gap={10} mt={10}>
