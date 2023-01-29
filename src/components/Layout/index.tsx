@@ -16,7 +16,7 @@ export const Layout = () => {
       <Box w="100%" minH="100vh" maxW={{ sm, md, lg, xl }} p="20px">
         {pathname != "/" && pathname != "/login" && <Header />}
         {pathname == "/" ? <Home /> : <Outlet />}
-        {pathname != "/" && pathname != "/login" && <Footer />}
+        {pathname != "/login" && <Footer />}
       </Box>
     </Flex>
   );
