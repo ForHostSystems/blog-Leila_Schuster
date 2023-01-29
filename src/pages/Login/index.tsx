@@ -31,7 +31,7 @@ export function Login() {
             LOGIN
           </Heading>
 
-          <form style={{ width: "90%" }} onSubmit={onSubmit}>
+          <form style={{ width: "90%" }} onSubmit={onSubmit} data-testid="login-form">
             <FormControl isRequired mb={4}>
               <FormLabel htmlFor="email">E-mail</FormLabel>
               <Input
@@ -46,9 +46,9 @@ export function Login() {
             </FormControl>
 
             <FormControl isRequired mb={8}>
-              <FormLabel htmlFor="psw">Senha</FormLabel>
+              <FormLabel htmlFor="password">Senha</FormLabel>
               <Input
-                id="psw"
+                id="password"
                 type="password"
                 name="password"
                 placeholder="Senha..."

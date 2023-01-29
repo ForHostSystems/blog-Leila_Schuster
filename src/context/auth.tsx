@@ -16,7 +16,7 @@ interface AuthContextProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
+export const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 interface AuthProviderProps {
   children: ReactNode;
