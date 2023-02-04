@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { Flex, HStack, Link } from "@chakra-ui/react";
 
-export const Navegation = () => {
+export const Navigation = () => {
   const { pathname } = useLocation();
   return (
     <Flex as="header" w="100%" justify={pathname == "/" ? "center" : "end"} align="center">
