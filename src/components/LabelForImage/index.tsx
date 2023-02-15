@@ -1,20 +1,29 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 
 import { useAuth } from "@/context/auth";
-import { usePresentationSetion } from "@/hooks/usePresentationSetion";
 import { Button, Flex, FormLabel, HStack, Img, ImgProps } from "@chakra-ui/react";
 
 interface LabelForImageProps extends ImgProps {
   image: string;
   labelRef: string;
   labelWidth?: string;
+  imageKey: string;
+  onSaveImage: (file: File, imageKey: string) => void;
+  isCancel?: boolean;
 }
 
-export const LabelForImage = ({ image, labelWidth, labelRef, ...props }: LabelForImageProps) => {
+export const LabelForImage = ({
+  image,
+  labelWidth,
+  labelRef,
+  imageKey,
+  onSaveImage,
+  isCancel = false,
+  ...props
+}: LabelForImageProps) => {
   const { authenticated } = useAuth();
-  const { handleChangeBanner } = usePresentationSetion();
   const [showImage, setShowImage] = useState(image);
   const [previewImage, setPreviewImage] = useState<File | null>(null);
 
@@ -29,10 +38,17 @@ export const LabelForImage = ({ image, labelWidth, labelRef, ...props }: LabelFo
     if (previewImage != null) {
       setShowImage(URL.createObjectURL(previewImage));
       console.log(previewImage);
-      handleChangeBanner(previewImage);
+      onSaveImage(previewImage, imageKey);
       setPreviewImage(null);
     }
   };
+
+  useEffect(() => {
+    console.log(isCancel);
+    if (isCancel) {
+      setShowImage(image);
+    }
+  }, [isCancel, image]);
 
   return (
     <Flex direction="column">

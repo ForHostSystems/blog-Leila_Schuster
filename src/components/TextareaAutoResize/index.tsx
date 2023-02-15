@@ -6,7 +6,6 @@ import { Textarea, TextareaProps } from "@chakra-ui/react";
 export const TextareaAutoResize = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
   return (
     <Textarea
-      border="1px dashed #777 !important"
       colorScheme="blackAlpha"
       overflow="hidden"
       minH="unset"
