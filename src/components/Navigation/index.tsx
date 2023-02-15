@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useAuth } from "@/context/auth";
 import { Button, Flex, HStack, Link } from "@chakra-ui/react";
 
-export const Navegation = () => {
+export const Navigation = () => {
   const { pathname } = useLocation();
   const { authenticated, signOut } = useAuth();
   return (

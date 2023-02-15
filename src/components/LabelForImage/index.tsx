@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -9,9 +9,20 @@ interface LabelForImageProps extends ImgProps {
   image: string;
   labelRef: string;
   labelWidth?: string;
+  imageKey: string;
+  onSaveImage: (file: File, imageKey: string) => void;
+  isCancel?: boolean;
 }
 
-export const LabelForImage = ({ image, labelWidth, labelRef, ...props }: LabelForImageProps) => {
+export const LabelForImage = ({
+  image,
+  labelWidth,
+  labelRef,
+  imageKey,
+  onSaveImage,
+  isCancel = false,
+  ...props
+}: LabelForImageProps) => {
   const { authenticated } = useAuth();
   const [showImage, setShowImage] = useState(image);
   const [previewImage, setPreviewImage] = useState<File | null>(null);
@@ -26,14 +37,28 @@ export const LabelForImage = ({ image, labelWidth, labelRef, ...props }: LabelFo
   const onSave = () => {
     if (previewImage != null) {
       setShowImage(URL.createObjectURL(previewImage));
+      console.log(previewImage);
+      onSaveImage(previewImage, imageKey);
       setPreviewImage(null);
     }
   };
 
+  useEffect(() => {
+    console.log(isCancel);
+    if (isCancel) {
+      setShowImage(image);
+    }
+  }, [isCancel, image]);
+
   return (
     <Flex direction="column">
       <FormLabel w={labelWidth} as="label" htmlFor={labelRef} cursor="pointer">
-        <Img src={previewImage != null ? URL.createObjectURL(previewImage) : showImage} {...props} />
+        <Img
+          {...props}
+          src={previewImage != null ? URL.createObjectURL(previewImage) : showImage}
+          border={authenticated ? "1px dashed #777" : ""}
+          p="0.125rem"
+        />
         <input id={labelRef} type="file" hidden disabled={!authenticated} onChange={onChangeImage} />
       </FormLabel>
       {authenticated && previewImage != null && (

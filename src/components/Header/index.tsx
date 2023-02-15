@@ -2,12 +2,12 @@ import React from "react";
 
 import { Box } from "@chakra-ui/react";
 
-import { Navegation } from "../Navegation";
+import { Navigation } from "../Navigation";
 
 export const Header = () => {
   return (
     <Box w="100%" h="5rem">
-      <Navegation />
+      <Navigation />
     </Box>
   );
 };
