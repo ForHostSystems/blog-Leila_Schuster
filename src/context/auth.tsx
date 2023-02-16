@@ -33,8 +33,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     isLoading,
     isError,
   } = useMutation<LoginOutputDTO, Error, LoginInputDTO>(login, {
-    onSuccess: ({ email, accessToken }) => {
+    onSuccess: ({ email, accessToken, refreshToken }) => {
       localStorage.setItem("token", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("user", email);
       setUser(user);
       setAuthenticated(true);

@@ -16,3 +16,5 @@ export interface PresentationSetionDTO {
   imagem2: string | FormData;
   imagem3: string | FormData;
 }
+
+export type PresentationSetionOutput = typeof mockedPresentationSetion;
