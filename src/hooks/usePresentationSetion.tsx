@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { mockedPresentationSetion, PresentationSetionDTO } from "@/mocks/mockedPresentationSetion";
+import { PresentationSetionDTO, PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
 import { useToast } from "@chakra-ui/react";
 
-export const usePresentationSetion = () => {
+export const usePresentationSetion = (presententionSetionContent: PresentationSetionOutput) => {
   const toast = useToast();
-  const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>(mockedPresentationSetion);
+  const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>(presententionSetionContent);
   const [isCancel, setIsCancel] = useState(false);
 
   const handleChangeImage = (image: File, imageKey: string) => {
@@ -21,12 +21,13 @@ export const usePresentationSetion = () => {
 
   const resetValues = () => {
     setIsCancel(true);
-    setNewPresentation(mockedPresentationSetion);
+    setNewPresentation(presententionSetionContent);
+    sendData(true);
     setTimeout(() => setIsCancel(false), 500);
   };
 
-  const sendData = () => {
-    if (newPresentation == mockedPresentationSetion) {
+  const sendData = (ignore = false) => {
+    if (newPresentation == presententionSetionContent && !ignore) {
       toast({
         title: "OPS!",
         description: "Não existe alteração à ser salva",
@@ -47,8 +48,6 @@ export const usePresentationSetion = () => {
   };
 
   return {
-    mockedPresentationSetion,
-    newPresentation,
     handleChangeImage,
     handleChangeDescription,
     resetValues,
