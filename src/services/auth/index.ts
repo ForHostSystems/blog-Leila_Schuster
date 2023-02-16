@@ -10,8 +10,9 @@ export interface UserDTO {
 }
 
 export interface LoginOutputDTO {
-  user: UserDTO;
-  token: string;
+  email: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 const login = async ({ email, password }: LoginInputDTO): Promise<LoginOutputDTO> => {

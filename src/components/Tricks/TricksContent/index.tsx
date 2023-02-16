@@ -9,8 +9,8 @@ export const TricksContent = () => {
   return (
     <Center flexDirection="column" w="100%" mt={10} mb={52}>
       {mockedTrics.map((value, index) => (
-        <>
-          <Flex key={index} justify="space-between" bg="whte" gap={5} mt={60} _first={{ mt: 0 }}>
+        <Flex key={index} direction="column" align="center" w="100%" mt={52} _first={{ mt: 0 }}>
+          <Flex justify="space-between" bg="whte" gap={5}>
             <Img
               src={value.cover}
               alt="capa de uma revista com a Leila Schuster"
@@ -57,7 +57,7 @@ export const TricksContent = () => {
               <Img src={value.logo} alt="logo revista regional (Regional)" w={{ lg: "250px", xl: "280px" }} />
             </CustomSpace>
           </Flex>
-        </>
+        </Flex>
       ))}
     </Center>
   );

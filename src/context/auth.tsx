@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
 import { api } from "../services/api";
-import { login, LoginInputDTO, LoginOutputDTO, UserDTO } from "../services/auth";
+import { login, LoginInputDTO, LoginOutputDTO } from "../services/auth";
 
 interface AuthContextProps {
-  user: UserDTO | null;
+  user: string | null;
   authenticated: boolean;
   isLoading: boolean;
   signIn: UseMutateFunction<LoginOutputDTO, Error, LoginInputDTO, unknown>;
@@ -25,7 +25,7 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const navigate = useNavigate();
   const toast = useToast();
-  const [user, setUser] = useState<UserDTO | null>(null);
+  const [user, setUser] = useState<string | null>(null);
   const [authenticated, setAuthenticated] = useState(false);
 
   const {
@@ -33,9 +33,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     isLoading,
     isError,
   } = useMutation<LoginOutputDTO, Error, LoginInputDTO>(login, {
-    onSuccess: ({ user, token }) => {
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+    onSuccess: ({ email, accessToken, refreshToken }) => {
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("user", email);
       setUser(user);
       setAuthenticated(true);
       navigate("/");
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     if (token != null && userStorage != null) {
       setAuthenticated(true);
-      setUser(JSON.parse(userStorage));
+      setUser(userStorage);
       api.interceptors.request.use(async (req) => {
         if (req.headers != null) {
           req.headers.Authorization = `Bearer ${token}`;
