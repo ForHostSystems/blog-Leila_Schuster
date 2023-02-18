@@ -22,6 +22,14 @@ export const mockedTricsPreview = [
   },
 ];
 
+export interface TricksPreviewDTO {
+  title: string;
+  revue: string;
+  edition: string;
+  logo: string | FormData;
+  revuePreview: string | FormData;
+}
+
 export const mockedTrics = [
   {
     cover: dicas_img2,
@@ -47,5 +55,5 @@ export const mockedTrics = [
   },
 ];
 
-export type TricksPreviewDTO = typeof mockedTricsPreview;
+export type TricksPreviewOutput = typeof mockedTricsPreview;
 export type TricksDTO = typeof mockedTrics;

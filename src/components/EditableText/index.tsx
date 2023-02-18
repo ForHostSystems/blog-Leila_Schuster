@@ -9,14 +9,22 @@ import { TextareaAutoResize } from "../TextareaAutoResize";
 
 interface EditableTextProps extends TextProps {
   element: "Heading" | "Text";
-  handleChange: (description: string) => void;
+  handleChange: (text: string, position: number | null) => void;
   textValue: string;
   isCancel?: boolean;
+  positionValue?: number;
 }
 
-export const EditableText = ({ element, handleChange, textValue, isCancel = false, ...props }: EditableTextProps) => {
+export const EditableText = ({
+  element,
+  handleChange,
+  textValue,
+  isCancel = false,
+  positionValue,
+  ...props
+}: EditableTextProps) => {
   const { authenticated } = useAuth();
-  const [description, setDescription] = useState<string>(textValue);
+  const [description, setDescription] = useState(textValue);
   const [isSaved, setIsSaved] = useState(false);
 
   const renderElement = {
@@ -30,13 +38,13 @@ export const EditableText = ({ element, handleChange, textValue, isCancel = fals
 
   const onSaveDescription = () => {
     setIsSaved(true);
-    handleChange(description);
+    handleChange(description, positionValue ?? null);
     setTimeout(() => setIsSaved(false), 1000);
   };
 
   const resetValue = () => {
     setDescription(textValue);
-    handleChange(textValue);
+    handleChange(textValue, positionValue ?? null);
   };
 
   useEffect(() => {
@@ -50,6 +58,11 @@ export const EditableText = ({ element, handleChange, textValue, isCancel = fals
       {authenticated ? (
         <Flex direction="column" w="100%">
           <TextareaAutoResize
+            color={props.color}
+            fontSize={props.fontSize}
+            p={props.p}
+            textAlign={props.textAlign}
+            fontWeight={props.fontWeight}
             border={`${!isSaved ? "1px" : "2px"} ${!isSaved ? "dashed" : "solid"} ${!isSaved ? "#777" : "green"} !important`}
             onChange={onChangeDescription}
             value={description}

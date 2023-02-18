@@ -30,7 +30,7 @@ export const PreviewPDF = ({ file, pages, pageNumber, ...props }: PreviewPDFProp
           borderRadius: "24px",
         },
       }}>
-      <Document file={file} options={{ workerSrc: "pdf.worker.js" }}>
+      <Document file={file}>
         {Array.from(new Array(pages), (el, index) => (
           <Page key={`page_${index + 1}`} pageNumber={pageNumber ?? index + 1} />
         ))}
