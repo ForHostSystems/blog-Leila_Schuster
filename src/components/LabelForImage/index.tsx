@@ -37,14 +37,12 @@ export const LabelForImage = ({
   const onSave = () => {
     if (previewImage != null) {
       setShowImage(URL.createObjectURL(previewImage));
-      console.log(previewImage);
       onSaveImage(previewImage, imageKey);
       setPreviewImage(null);
     }
   };
 
   useEffect(() => {
-    console.log(isCancel);
     if (isCancel) {
       setShowImage(image);
     }
