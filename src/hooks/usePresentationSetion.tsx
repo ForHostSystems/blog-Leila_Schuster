@@ -1,18 +1,66 @@
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { useState } from "react";
+import { useMutation } from "react-query";
 
 import { PresentationSetionDTO, PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
+import {
+  PresentationSetionDescriptionOutput,
+  PresentationSetionImagesDTO,
+  PresentationSetionImagesOutput,
+  updatePresentationSetionDescription,
+  updatePresentationSetionImages,
+} from "@/services/Home/presentationSetion";
 import { useToast } from "@chakra-ui/react";
 
 export const usePresentationSetion = (presententionSetionContent: PresentationSetionOutput) => {
   const toast = useToast();
-  const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>(presententionSetionContent);
+  const { mutate: sendDescription, isLoading: isLoadingDescription } = useMutation<
+    PresentationSetionDescriptionOutput,
+    Error,
+    string
+  >(updatePresentationSetionDescription, {
+    onSuccess: () => {
+      toast({
+        title: "Sucesso!",
+        description: "Suas alterações foram salvas",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+    onError: () => {
+      toast({
+        title: "OPS!",
+        description: "Algo deu errado, por favor tente novamente mais tarde!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+  });
+  const { mutate: sendImages, isLoading: isLoadingImages } = useMutation<
+    PresentationSetionImagesOutput,
+    Error,
+    PresentationSetionImagesDTO
+  >(updatePresentationSetionImages, {
+    onSuccess: () => {
+      sendDescription(newPresentation.description);
+    },
+    onError: () => {
+      toast({
+        title: "OPS!",
+        description: "Algo deu errado, por favor tente novamente mais tarde!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+  });
+  const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>({} as PresentationSetionDTO);
   const [isCancel, setIsCancel] = useState(false);
 
   const handleChangeImage = (image: File, imageKey: string) => {
-    const formData = new FormData();
-    formData.append("image", image);
-    console.log(formData);
-    setNewPresentation({ ...newPresentation, [imageKey]: formData });
+    setNewPresentation({ ...newPresentation, [imageKey]: image });
   };
 
   const handleChangeDescription = (description: string) => {
@@ -26,6 +74,16 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
     setTimeout(() => setIsCancel(false), 500);
   };
 
+  const updatePresentationSetion = () => {
+    const images: PresentationSetionImagesDTO = {
+      imagem1_url: newPresentation.imagem1_url,
+      imagem2_url: newPresentation.imagem2_url,
+      imagem3_url: newPresentation.imagem3_url,
+    };
+
+    sendImages(images);
+  };
+
   const sendData = (ignore = false) => {
     if (newPresentation == presententionSetionContent && !ignore) {
       toast({
@@ -36,14 +94,7 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
         isClosable: true,
       });
     } else {
-      console.log(newPresentation);
-      toast({
-        title: "Sucesso!",
-        description: "Suas alterações foram salvas",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
+      updatePresentationSetion();
     }
   };
 
@@ -53,5 +104,6 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
     resetValues,
     sendData,
     isCancel,
+    isLoading: isLoadingImages || isLoadingDescription,
   };
 };

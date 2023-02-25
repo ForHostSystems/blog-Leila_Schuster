@@ -5,3 +5,5 @@ export const mockedHomeContent = {
   about: mockedPresentationSetion,
   tricks: mockedTricsPreview,
 };
+
+export type MockHome = typeof mockedHomeContent;

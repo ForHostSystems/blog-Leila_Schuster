@@ -30,7 +30,7 @@ export const BiographyPreview = ({
           labelRef="imageBioTop"
           labelWidth="100%"
           onSaveImage={onSaveImage}
-          imageKey="imagem2"
+          imageKey="imagem2_url"
           isCancel={isCancel}
         />
         <LabelForImage
@@ -38,7 +38,7 @@ export const BiographyPreview = ({
           labelRef="imageBioBottom"
           labelWidth="100%"
           onSaveImage={onSaveImage}
-          imageKey="imagem3"
+          imageKey="imagem3_url"
           isCancel={isCancel}
         />
       </Stack>
