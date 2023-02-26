@@ -30,7 +30,7 @@ export function Home() {
         </Heading>
         <CustomCaroussel slides={mockedSlides} />
       </VStack>
-      <TricksPreview tricksContent={mockedHomeContent.tricks} />
+      <TricksPreview tricksContent={presententionSetionContent?.tricks ?? mockedHomeContent.tricks} />
       <BlogPreview />
       <Box my={52} w="100%">
         <Partners />

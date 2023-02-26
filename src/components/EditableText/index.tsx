@@ -9,10 +9,11 @@ import { TextareaAutoResize } from "../TextareaAutoResize";
 
 interface EditableTextProps extends TextProps {
   element: "Heading" | "Text";
-  handleChange: (text: string, position: number | null) => void;
+  handleChange: (text: string, position: number | null, field: string) => void;
   textValue: string;
   isCancel?: boolean;
-  positionValue?: number;
+  positionValue?: number | null;
+  field?: string;
 }
 
 export const EditableText = ({
@@ -20,7 +21,8 @@ export const EditableText = ({
   handleChange,
   textValue,
   isCancel = false,
-  positionValue,
+  positionValue = null,
+  field = "",
   ...props
 }: EditableTextProps) => {
   const { authenticated } = useAuth();
@@ -38,13 +40,13 @@ export const EditableText = ({
 
   const onSaveDescription = () => {
     setIsSaved(true);
-    handleChange(description, positionValue ?? null);
+    handleChange(description, positionValue, field);
     setTimeout(() => setIsSaved(false), 1000);
   };
 
   const resetValue = () => {
     setDescription(textValue);
-    handleChange(textValue, positionValue ?? null);
+    handleChange(textValue, positionValue, field);
   };
 
   useEffect(() => {

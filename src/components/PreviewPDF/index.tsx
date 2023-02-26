@@ -4,6 +4,8 @@ import { Document, Page, pdfjs } from "react-pdf";
 import { Box, BoxProps } from "@chakra-ui/react";
 
 import "./styles.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;

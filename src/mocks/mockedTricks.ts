@@ -7,27 +7,34 @@ import pdf from "../assets/Manual_de_Marca_Leila_Schuster.pdf";
 
 export const mockedTricsPreview = [
   {
+    id: "1",
     title: "Lifestyle",
     revue: "Revista Regional",
     edition: "Edição n° xxx - 00/00",
-    logo: logoRegional,
-    revuePreview: pdf,
+    imagem_url: logoRegional,
+    arquivo_url: pdf,
+    video_link: "",
   },
   {
+    id: "2",
     title: "Go Lifestyle",
     revue: "Revista Go Where",
     edition: "Edição n° xxx - 00/00",
-    logo: logoGoWhere,
-    revuePreview: pdf,
+    imagem_url: logoGoWhere,
+    arquivo_url: pdf,
+    video_link: "",
   },
 ];
 
 export interface TricksPreviewDTO {
+  id: string;
   title: string;
   revue: string;
   edition: string;
-  logo: string | FormData;
-  revuePreview: string | FormData;
+  imagem_url: string | File;
+  arquivo_url: string | File;
+  video_link: string;
+  [key: string]: string | File;
 }
 
 export const mockedTrics = [

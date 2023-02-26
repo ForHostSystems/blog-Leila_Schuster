@@ -7,7 +7,7 @@ import { PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
 import { Box, Button, Flex, Img, SimpleGrid, Stack, useDisclosure } from "@chakra-ui/react";
 
 import { BiographyPreview } from "../Biography/BiographyPreview";
-import { LabelForImage } from "../LabelForImage";
+import { LabelForFile } from "../LabelForFile";
 import { PresentationSetionModal } from "../Modals/PresentationSetionModal";
 import { Navigation } from "../Navigation";
 
@@ -30,10 +30,10 @@ export const PresentationSetion = ({ presententionSetionContent }: PresentationS
   return (
     <Flex direction="column" border={authenticated ? "1px dashed #ccc" : ""} borderRadius={4}>
       <SimpleGrid id="home" columns={2} spacing={5} w="100%">
-        <LabelForImage
+        <LabelForFile
           labelRef="bannerHome"
           labelWidth="100%"
-          image={imagem1_url}
+          file={imagem1_url}
           onSaveImage={handleChangeImage}
           imageKey="imagem1_url"
           isCancel={isCancel}

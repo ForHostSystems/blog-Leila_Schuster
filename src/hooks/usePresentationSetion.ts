@@ -14,6 +14,7 @@ import { useToast } from "@chakra-ui/react";
 
 export const usePresentationSetion = (presententionSetionContent: PresentationSetionOutput) => {
   const toast = useToast();
+
   const { mutate: sendDescription, isLoading: isLoadingDescription } = useMutation<
     PresentationSetionDescriptionOutput,
     Error,
@@ -38,6 +39,7 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
       });
     },
   });
+
   const { mutate: sendImages, isLoading: isLoadingImages } = useMutation<
     PresentationSetionImagesOutput,
     Error,
@@ -56,6 +58,7 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
       });
     },
   });
+
   const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>({} as PresentationSetionDTO);
   const [isCancel, setIsCancel] = useState(false);
 

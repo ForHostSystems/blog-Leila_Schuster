@@ -1,7 +1,7 @@
 import React from "react";
 
 import { EditableText } from "@/components/EditableText";
-import { LabelForImage } from "@/components/LabelForImage";
+import { LabelForFile } from "@/components/LabelForFile";
 import { Title } from "@/components/Title";
 import { Flex, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
 
@@ -25,16 +25,16 @@ export const BiographyPreview = ({
   return (
     <SimpleGrid as="section" id="biografia" columns={2} spacing={5} w="100%" mt={10}>
       <Stack gap="10px">
-        <LabelForImage
-          image={imageTop}
+        <LabelForFile
+          file={imageTop}
           labelRef="imageBioTop"
           labelWidth="100%"
           onSaveImage={onSaveImage}
           imageKey="imagem2_url"
           isCancel={isCancel}
         />
-        <LabelForImage
-          image={imageBottom}
+        <LabelForFile
+          file={imageBottom}
           labelRef="imageBioBottom"
           labelWidth="100%"
           onSaveImage={onSaveImage}
