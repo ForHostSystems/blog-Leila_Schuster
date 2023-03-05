@@ -13,7 +13,8 @@ export const mockedTricsPreview = [
     edition: "Edição n° xxx - 00/00",
     imagem_url: logoRegional,
     arquivo_url: pdf,
-    video_link: "",
+    video_url: "",
+    video_description: "",
   },
   {
     id: "2",
@@ -22,7 +23,8 @@ export const mockedTricsPreview = [
     edition: "Edição n° xxx - 00/00",
     imagem_url: logoGoWhere,
     arquivo_url: pdf,
-    video_link: "",
+    video_url: "",
+    video_description: "",
   },
 ];
 
@@ -33,7 +35,8 @@ export interface TricksPreviewDTO {
   edition: string;
   imagem_url: string | File;
   arquivo_url: string | File;
-  video_link: string;
+  video_url: string;
+  video_description: string;
   [key: string]: string | File;
 }
 

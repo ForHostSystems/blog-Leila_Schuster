@@ -14,6 +14,8 @@ export interface TricksPreviewTextsDTO {
       title: string;
       revue: string;
       edition: string;
+      video_description: string;
+      video_url: string;
     },
   ];
 }

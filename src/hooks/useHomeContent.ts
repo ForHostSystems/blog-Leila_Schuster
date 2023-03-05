@@ -1,9 +1,17 @@
 import { useQuery } from "react-query";
 
-import { getHomeContent, HomeDTO } from "./../services/Home/index";
+import { MockHome } from "@/mocks/mockedHomeContent";
+
+import { getHomeContent } from "./../services/Home/index";
 
 export const useHomeContent = () => {
-  const { data: presententionSetionContent, isError, isLoading } = useQuery<HomeDTO>("getHomeContent", getHomeContent);
+  const {
+    data: presententionSetionContent,
+    isError,
+    isLoading,
+  } = useQuery<MockHome>("getHomeContent", getHomeContent, {
+    refetchOnWindowFocus: false,
+  });
 
   return { presententionSetionContent, isError, isLoading };
 };

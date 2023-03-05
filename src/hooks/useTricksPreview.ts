@@ -41,7 +41,7 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
         });
 
         if (pos != null) {
-          const { title, edition, revue } = newTricksPreview[pos];
+          const { title, edition, revue, video_description, video_url } = newTricksPreview[pos];
 
           sendTrickPreview({
             body: [
@@ -50,6 +50,8 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
                 title,
                 revue,
                 edition,
+                video_description,
+                video_url,
               },
             ],
           });
@@ -76,7 +78,7 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
 
   const sendData = (position: number) => {
     const body = {
-      arquivo_url: newTricksPreview[position].arquivo_url,
+      arquivo_url: newTricksPreview[position].video_url.length > 0 ? "" : newTricksPreview[position].arquivo_url,
       imagem_url: newTricksPreview[position].imagem_url,
       id: newTricksPreview[position].id,
     };
