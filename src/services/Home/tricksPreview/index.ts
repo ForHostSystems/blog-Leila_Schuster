@@ -38,7 +38,7 @@ const updateTricksPreviewFiles = async (props: TricksPreviewFilesDTO): Promise<T
 };
 
 const updateTrickPreview = async ({ body }: TricksPreviewTextsDTO) => {
-  const { data } = await api.put(`/trick/${body[0]}`, { ...body[1], revue_preview: "" });
+  const { data } = await api.put(`/trick/${body[0]}`, body[1]);
 
   return data;
 };
