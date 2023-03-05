@@ -1,6 +1,16 @@
 import React from "react";
 
-import { Modal, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, ModalProps } from "@chakra-ui/react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalProps,
+} from "@chakra-ui/react";
 
 interface BaseModalProps extends ModalProps {
   onConfirm?: () => void;
@@ -11,10 +21,19 @@ export const BaseModal = ({ isOpen, onClose, onConfirm, title, children, ...prop
   return (
     <Modal isOpen={isOpen} onClose={onClose} {...props}>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent bg="background" transition="0.1s">
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
-        {children}
+        <ModalBody>{children}</ModalBody>
+
+        <ModalFooter>
+          <Button colorScheme="red" variant="ghost" mr={3} onClick={onClose}>
+            Fechar
+          </Button>
+          <Button colorScheme="green" variant="ghost" onClick={onConfirm}>
+            Confirmar
+          </Button>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );

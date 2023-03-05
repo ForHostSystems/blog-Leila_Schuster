@@ -7,7 +7,7 @@ import { PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
 import { Box, Button, Flex, Img, SimpleGrid, Stack, useDisclosure } from "@chakra-ui/react";
 
 import { BiographyPreview } from "../Biography/BiographyPreview";
-import { LabelForImage } from "../LabelForImage";
+import { LabelForFile } from "../LabelForFile";
 import { PresentationSetionModal } from "../Modals/PresentationSetionModal";
 import { Navigation } from "../Navigation";
 
@@ -18,9 +18,9 @@ interface PresentationSetionProps {
 export const PresentationSetion = ({ presententionSetionContent }: PresentationSetionProps) => {
   const { authenticated } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { sendData, resetValues, handleChangeImage, handleChangeDescription, isCancel } =
+  const { sendData, resetValues, handleChangeImage, handleChangeDescription, isCancel, isLoading } =
     usePresentationSetion(presententionSetionContent);
-  const { description, imagem1, imagem2, imagem3 } = presententionSetionContent;
+  const { description, imagem1_url, imagem2_url, imagem3_url } = presententionSetionContent;
 
   const handleConfirmModal = () => {
     resetValues();
@@ -30,12 +30,12 @@ export const PresentationSetion = ({ presententionSetionContent }: PresentationS
   return (
     <Flex direction="column" border={authenticated ? "1px dashed #ccc" : ""} borderRadius={4}>
       <SimpleGrid id="home" columns={2} spacing={5} w="100%">
-        <LabelForImage
+        <LabelForFile
           labelRef="bannerHome"
           labelWidth="100%"
-          image={imagem1}
+          file={imagem1_url}
           onSaveImage={handleChangeImage}
-          imageKey="imagem1"
+          imageKey="imagem1_url"
           isCancel={isCancel}
         />
         <Stack h="100%" direction="column" justify="space-between" alignItems="center" pos="relative">
@@ -45,8 +45,8 @@ export const PresentationSetion = ({ presententionSetionContent }: PresentationS
         </Stack>
       </SimpleGrid>
       <BiographyPreview
-        imageTop={imagem2}
-        imageBottom={imagem3}
+        imageTop={imagem2_url}
+        imageBottom={imagem3_url}
         descriptionValue={description}
         onChangeDescription={handleChangeDescription}
         onSaveImage={handleChangeImage}
@@ -55,10 +55,10 @@ export const PresentationSetion = ({ presententionSetionContent }: PresentationS
 
       {authenticated && (
         <Flex alignSelf={{ sm: "center", lg: "start" }} gap={5}>
-          <Button size={{ md: "md", xl: "lg" }} colorScheme="gray" onClick={onOpen}>
+          <Button size={{ md: "md", xl: "lg" }} colorScheme="gray" disabled={isLoading} onClick={onOpen}>
             Cancelar
           </Button>
-          <Button size={{ md: "md", xl: "lg" }} colorScheme="green" onClick={() => sendData()}>
+          <Button size={{ md: "md", xl: "lg" }} colorScheme="green" isLoading={isLoading} onClick={() => sendData()}>
             Salvar
           </Button>
         </Flex>
