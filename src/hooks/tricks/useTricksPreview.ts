@@ -9,7 +9,7 @@ import {
   TricksPreviewTextsDTO,
   updateTrickPreview,
   updateTricksPreviewFiles,
-} from "./../services/Home/tricksPreview/index";
+} from "../../services/Home/tricksPreview/index";
 
 export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
   const toast = useToast();
@@ -24,6 +24,15 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
         title: "Sucesso!",
         description: "Suas alterações foram salvas",
         status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+    onError: () => {
+      toast({
+        title: "OPS!",
+        description: "Algo deu errado, por favor tente novamente mais tarde!",
+        status: "error",
         duration: 3000,
         isClosable: true,
       });
@@ -56,6 +65,15 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
             ],
           });
         }
+      },
+      onError: () => {
+        toast({
+          title: "OPS!",
+          description: "Algo deu errado, por favor tente novamente mais tarde!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       },
     },
   );

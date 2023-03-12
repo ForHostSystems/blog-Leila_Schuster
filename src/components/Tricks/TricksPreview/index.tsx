@@ -2,8 +2,9 @@ import React from "react";
 
 import logoLS from "@/assets/logo-LS.png";
 import { Title } from "@/components/Title";
-import { useTricksPreview } from "@/hooks/useTricksPreview";
+import { useTricksPreview } from "@/hooks/tricks/useTricksPreview";
 import { TricksPreviewOutput } from "@/mocks/mockedTricks";
+import { orderById } from "@/utils/orderById";
 import { Flex, Img, VStack } from "@chakra-ui/react";
 
 import { TricksPreviewContent } from "./TricksPreviewContent";
@@ -15,12 +16,6 @@ interface TricksPreviewProps {
 export const TricksPreview = ({ tricksContent }: TricksPreviewProps) => {
   const { handleChangeText, handleChangeImage, sendData, isLoading } = useTricksPreview(tricksContent);
 
-  const orderContent = (a: TricksPreviewOutput[0], b: TricksPreviewOutput[0]) => {
-    if (a.id < b.id) return 1;
-    if (a.id > b.id) return -1;
-    return 0;
-  };
-
   return (
     <VStack as="section" align="start" mt={28} w="100%">
       <Flex mb={20}>
@@ -29,9 +24,9 @@ export const TricksPreview = ({ tricksContent }: TricksPreviewProps) => {
         </Title>
         <Img src={logoLS} alt="Logo Leila Schuster (LS)" w="130px" ml={6} />
       </Flex>
-      {tricksContent.sort(orderContent).map((value, index) => (
+      {tricksContent.sort(orderById).map((value, index) => (
         <TricksPreviewContent
-          key={index}
+          key={value.id}
           content={value}
           order={index}
           handleChangeText={handleChangeText}

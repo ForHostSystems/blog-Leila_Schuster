@@ -11,7 +11,7 @@ import { mockedSlides } from "@/mocks/mockedSlides";
 import { Box, Center, Heading, Spinner, VStack } from "@chakra-ui/react";
 
 export function Home() {
-  const { presententionSetionContent, isLoading } = useHomeContent();
+  const { data, isLoading } = useHomeContent();
 
   if (isLoading) {
     return (
@@ -23,17 +23,17 @@ export function Home() {
 
   return (
     <>
-      <PresentationSetion presententionSetionContent={presententionSetionContent?.about ?? mockedHomeContent.about} />
+      <PresentationSetion presententionSetionContent={data?.about ?? mockedHomeContent.about} />
       <VStack as="section" id="time-line" w="100%" mt={28}>
         <Heading mb={10} fontSize="3.3rem">
           momentos marcantes
         </Heading>
         <CustomCaroussel slides={mockedSlides} />
       </VStack>
-      <TricksPreview tricksContent={presententionSetionContent?.tricks ?? mockedHomeContent.tricks} />
+      <TricksPreview tricksContent={data?.tricks ?? mockedHomeContent.tricks} />
       <BlogPreview />
       <Box my={52} w="100%">
-        <Partners />
+        <Partners partners={data?.partners ?? mockedHomeContent.partners} />
       </Box>
     </>
   );
