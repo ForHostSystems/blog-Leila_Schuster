@@ -1,7 +1,8 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { TimeLine } from "@/mocks/mockedSlides";
+import { ITimeLine } from "@/mocks/mockedSlides";
+import { convertToUrl } from "@/utils/convertToUrl";
 import { Box, VStack, Text, Img } from "@chakra-ui/react";
 import { Navigation, Autoplay, FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,11 +12,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./styles.css";
 
-interface CustomCarousselProps {
-  slides: TimeLine;
+interface TimelineCarrosselProps {
+  slides: ITimeLine[];
 }
 
-export const CustomCaroussel = ({ slides }: CustomCarousselProps) => {
+export const TimelineCarrossel = ({ slides }: TimelineCarrosselProps) => {
   const handleClickArrow = (arrow: string) => {
     const arrowSelected = document.querySelector(`.swiper-button-${arrow}`) as HTMLDivElement | null;
     if (arrowSelected != null) arrowSelected.click();
@@ -57,7 +58,7 @@ export const CustomCaroussel = ({ slides }: CustomCarousselProps) => {
               </Text>
               {value.image != null ? (
                 <Img
-                  src={value.image}
+                  src={convertToUrl(value.image)}
                   alt={value.description}
                   w={{ lg: "310px", xl: "330px" }}
                   h={{ lg: "310px", xl: "330px" }}

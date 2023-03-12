@@ -86,4 +86,17 @@ export const mockedSlides = [
   },
 ];
 
-export type TimeLine = typeof mockedSlides;
+export interface ITimeLine {
+  year: string;
+  image: File | string;
+  description: string;
+  [key: string]: File | string;
+}
+
+export interface TimeLineOutput {
+  year: string;
+  image: string;
+  description: string;
+}
+
+export type TimeLineDTO = typeof mockedSlides;

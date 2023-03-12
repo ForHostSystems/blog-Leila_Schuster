@@ -1,14 +1,14 @@
 import React from "react";
 
 import { BlogPreview } from "@/components/Blog/BlogPreview";
-import { CustomCaroussel } from "@/components/CustomCaroussel";
 import { Partners } from "@/components/Partners";
 import { PresentationSetion } from "@/components/PresentationSetion";
+import { TimeLine } from "@/components/TimeLine";
 import { TricksPreview } from "@/components/Tricks/TricksPreview";
+import { TimelineProvider } from "@/context/TimelineProvider";
 import { useHomeContent } from "@/hooks/useHomeContent";
 import { mockedHomeContent } from "@/mocks/mockedHomeContent";
-import { mockedSlides } from "@/mocks/mockedSlides";
-import { Box, Center, Heading, Spinner, VStack } from "@chakra-ui/react";
+import { Box, Center, Spinner } from "@chakra-ui/react";
 
 export function Home() {
   const { data, isLoading } = useHomeContent();
@@ -24,12 +24,9 @@ export function Home() {
   return (
     <>
       <PresentationSetion presententionSetionContent={data?.about ?? mockedHomeContent.about} />
-      <VStack as="section" id="time-line" w="100%" mt={28}>
-        <Heading mb={10} fontSize="3.3rem">
-          momentos marcantes
-        </Heading>
-        <CustomCaroussel slides={mockedSlides} />
-      </VStack>
+      <TimelineProvider moments={mockedHomeContent.sliders}>
+        <TimeLine />
+      </TimelineProvider>
       <TricksPreview tricksContent={data?.tricks ?? mockedHomeContent.tricks} />
       <BlogPreview />
       <Box my={52} w="100%">
