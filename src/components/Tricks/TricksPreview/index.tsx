@@ -4,7 +4,6 @@ import logoLS from "@/assets/logo-LS.png";
 import { Title } from "@/components/Title";
 import { useTricksPreview } from "@/hooks/tricks/useTricksPreview";
 import { TricksPreviewOutput } from "@/mocks/mockedTricks";
-import { orderById } from "@/utils/orderById";
 import { Flex, Img, VStack } from "@chakra-ui/react";
 
 import { TricksPreviewContent } from "./TricksPreviewContent";
@@ -24,7 +23,7 @@ export const TricksPreview = ({ tricksContent }: TricksPreviewProps) => {
         </Title>
         <Img src={logoLS} alt="Logo Leila Schuster (LS)" w="130px" ml={6} />
       </Flex>
-      {tricksContent.sort(orderById).map((value, index) => (
+      {tricksContent.map((value, index) => (
         <TricksPreviewContent
           key={value.id}
           content={value}

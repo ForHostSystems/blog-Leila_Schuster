@@ -24,7 +24,7 @@ export function Home() {
   return (
     <>
       <PresentationSetion presententionSetionContent={data?.about ?? mockedHomeContent.about} />
-      <TimelineProvider moments={mockedHomeContent.sliders}>
+      <TimelineProvider moments={data?.sliders ?? mockedHomeContent.sliders}>
         <TimeLine />
       </TimelineProvider>
       <TricksPreview tricksContent={data?.tricks ?? mockedHomeContent.tricks} />

@@ -5,7 +5,6 @@ import { useAuth } from "@/context/auth";
 import { usePartners } from "@/hooks/usePartners";
 import { PartnersDTO, PartnersOutput } from "@/mocks/mockedPartners";
 import { convertToUrl } from "@/utils/convertToUrl";
-import { orderById } from "@/utils/orderById";
 import { Button, Flex, HStack, Img, Skeleton, useDisclosure } from "@chakra-ui/react";
 
 import { DeletePartnerModal } from "../Modals/DeletePartnersModal";
@@ -55,9 +54,13 @@ export const Partners = ({ partners }: PartnersProps) => {
         Parceiros
       </Title>
 
-      {authenticated && <Button onClick={onOpen}>Adicionar Parceiro</Button>}
+      {authenticated && (
+        <Button colorScheme="blackAlpha" onClick={onOpen}>
+          Adicionar Parceiro
+        </Button>
+      )}
       <HStack w="100%" gap={32} justify="center" mt={20} wrap="wrap">
-        {newPartners.sort(orderById).map((partner, index) => (
+        {newPartners.map((partner, index) => (
           <HStack w={{ lg: "200px", xl: "250px" }} key={partner.id}>
             <Skeleton as={Flex} isLoaded={!isLoading} flexDirection="column">
               {authenticated && (
