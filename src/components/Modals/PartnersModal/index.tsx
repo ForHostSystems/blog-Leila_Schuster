@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { BiImage } from "react-icons/bi";
 
 import { SelectdPartner } from "@/components/Partners";
+import { CreateNewPartnerProps } from "@/services/Home/partners";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { FormLabel, Img } from "@chakra-ui/react";
 
@@ -10,7 +11,7 @@ import { BaseModal } from "../BaseModal";
 interface PartnersModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (position?: number) => void;
+  onConfirm: (position?: number, partner?: CreateNewPartnerProps) => void;
   partner: SelectdPartner | null;
   handleChangeImage: (image: File, imageKey: string, position: number | null) => void;
 }
@@ -27,9 +28,11 @@ export const PartnersModal = ({ isOpen, onClose, onConfirm, partner, handleChang
 
   const onConfirmModal = () => {
     if (previewFile != null && typeof previewFile != "string") {
-      handleChangeImage(previewFile, "imagem_url", partner?.position ?? null);
+      if (partner) {
+        handleChangeImage(previewFile, "imagem_url", partner.position);
+      }
+      onConfirm(partner?.position, { imagem_url: previewFile as File });
     }
-    onConfirm(partner?.position);
     onCloseModal();
   };
 

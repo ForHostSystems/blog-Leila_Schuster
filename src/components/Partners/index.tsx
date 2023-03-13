@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { MdDelete } from "react-icons/md";
 
 import { useAuth } from "@/context/auth";
 import { usePartners } from "@/hooks/usePartners";
 import { PartnersDTO, PartnersOutput } from "@/mocks/mockedPartners";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { orderById } from "@/utils/orderById";
-import { Button, HStack, Img, Skeleton, useDisclosure } from "@chakra-ui/react";
+import { Button, Flex, HStack, Img, Skeleton, useDisclosure } from "@chakra-ui/react";
 
+import { DeletePartnerModal } from "../Modals/DeletePartnersModal";
 import { PartnersModal } from "../Modals/PartnersModal";
 import { Title } from "../Title";
 
@@ -19,19 +21,32 @@ export interface SelectdPartner extends PartnersDTO {
 }
 
 export const Partners = ({ partners }: PartnersProps) => {
-  const { newPartners, handleChangeImage, sendData, isLoading } = usePartners(partners);
+  const { newPartners, handleChangeImage, sendData, onDeleteImage, isLoading } = usePartners(partners);
   const { authenticated } = useAuth();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [selectdPartner, setSelectedPartner] = useState<SelectdPartner | null>(null);
+  const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
+  const [idForDelete, setIdForDelete] = useState<number | null>(null);
 
-  const onOpenModal = (partner: PartnersDTO, index: number) => {
-    setSelectedPartner({ ...partner, position: index });
-    onOpen();
+  const onOpenPartnerModal = (partner: PartnersDTO, index: number) => {
+    if (authenticated) {
+      setSelectedPartner({ ...partner, position: index });
+      onOpen();
+    }
   };
 
-  const onCloseModal = () => {
+  const onOpenDeletePartnerModal = (id: number) => {
+    setIsOpenModalDelete(true);
+    setIdForDelete(id);
+  };
+
+  const onClosePartnerModal = () => {
     setSelectedPartner(null);
     onClose();
+  };
+
+  const onCloseDeletePartnerModal = () => {
+    setIsOpenModalDelete(false);
   };
 
   return (
@@ -41,26 +56,45 @@ export const Partners = ({ partners }: PartnersProps) => {
       </Title>
 
       {authenticated && <Button onClick={onOpen}>Adicionar Parceiro</Button>}
-      <HStack w="100%" gap={32} justify="center" mt={20}>
+      <HStack w="100%" gap={32} justify="center" mt={20} wrap="wrap">
         {newPartners.sort(orderById).map((partner, index) => (
           <HStack w={{ lg: "200px", xl: "250px" }} key={partner.id}>
-            <Skeleton isLoaded={!isLoading}>
+            <Skeleton as={Flex} isLoaded={!isLoading} flexDirection="column">
+              {authenticated && (
+                <Button
+                  w="fit-content"
+                  alignSelf="end"
+                  mb={2}
+                  mr="-1.25rem"
+                  variant="unstyled"
+                  onClick={() => onOpenDeletePartnerModal(partner.id)}>
+                  <MdDelete size="1.25rem" color="red" />
+                </Button>
+              )}
               <Img
+                border={authenticated ? "1px dashed #777" : ""}
                 key={partner.id}
                 w="100%"
                 src={convertToUrl(partner.imagem_url)}
                 filter="grayscale(100%)"
                 _hover={{ cursor: "pointer" }}
-                onClick={() => onOpenModal(partner, index)}
+                onClick={() => onOpenPartnerModal(partner, index)}
               />
             </Skeleton>
           </HStack>
         ))}
       </HStack>
 
+      <DeletePartnerModal
+        isOpen={isOpenModalDelete}
+        onClose={onCloseDeletePartnerModal}
+        onConfirm={onDeleteImage}
+        id={idForDelete}
+      />
+
       <PartnersModal
         isOpen={isOpen}
-        onClose={onCloseModal}
+        onClose={onClosePartnerModal}
         onConfirm={sendData}
         partner={selectdPartner}
         handleChangeImage={handleChangeImage}
