@@ -35,6 +35,7 @@
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
     "eqeqeq": "off",
     "prettier/prettier": "warn",
     "import-helpers/order-imports": [

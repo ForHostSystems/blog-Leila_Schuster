@@ -37,6 +37,8 @@ export const usePartners = (partners: PartnersOutput[]) => {
     {
       onSuccess: (data: PartnersDTO) => {
         const { id, imagem_url } = data;
+        setNewPartners([...newPartners, { id, imagem_url }]);
+
         toast({
           title: "Sucesso!",
           description: "Suas alterações foram salvas",
@@ -44,8 +46,6 @@ export const usePartners = (partners: PartnersOutput[]) => {
           duration: 3000,
           isClosable: true,
         });
-
-        setNewPartners([...newPartners, { id, imagem_url }]);
       },
       onError: () => {
         toast({
@@ -59,8 +59,10 @@ export const usePartners = (partners: PartnersOutput[]) => {
     },
   );
 
-  const { mutate: handleDeletePartner } = useMutation(deletePartner, {
-    onSuccess: () => {
+  const { mutate: handleDeletePartner, isLoading: isLoadingDelete } = useMutation(deletePartner, {
+    onSuccess: (data, id) => {
+      setNewPartners(newPartners.filter((item) => item.id != id));
+
       toast({
         title: "Sucesso!",
         description: "Suas alterações foram salvas",
@@ -89,7 +91,6 @@ export const usePartners = (partners: PartnersOutput[]) => {
 
   const onDeleteImage = (id: number) => {
     handleDeletePartner(id);
-    setNewPartners(newPartners.filter((item) => item.id != id));
   };
 
   const sendData = (position?: number, partner?: CreateNewPartnerProps) => {
@@ -100,5 +101,11 @@ export const usePartners = (partners: PartnersOutput[]) => {
     }
   };
 
-  return { newPartners, handleChangeImage, sendData, onDeleteImage, isLoading: isLoadingUpdate || isLoadingCreate };
+  return {
+    newPartners,
+    handleChangeImage,
+    sendData,
+    onDeleteImage,
+    isLoading: isLoadingUpdate || isLoadingCreate || isLoadingDelete,
+  };
 };

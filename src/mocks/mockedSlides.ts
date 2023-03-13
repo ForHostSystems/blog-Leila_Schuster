@@ -15,75 +15,103 @@ import slide14 from "../assets/2022-logos-revistas.png";
 
 export const mockedSlides = [
   {
+    id: 1,
     year: "1993",
-    image: slide1,
+    imagem_url: slide1,
     description: "Miss Brasil e classificação no Miss Universo",
   },
   {
+    id: 2,
     year: "1994",
-    image: slide2,
+    imagem_url: slide2,
     description: "Trabalhos como modelo Europa e EUA",
   },
   {
+    id: 3,
     year: "1996",
-    image: slide3,
+    imagem_url: slide3,
     description: "Nascimento de meu filho Klaus",
   },
   {
+    id: 4,
     year: "2000",
-    image: slide4,
+    imagem_url: slide4,
     description: "Graduação em Jornalismo",
   },
   {
+    id: 5,
     year: "2001",
-    image: slide5,
+    imagem_url: slide5,
     description: "Apresentação Programa Beleza de Mulher - Band RJ",
   },
   {
+    id: 6,
     year: "2005",
-    image: slide6,
+    imagem_url: slide6,
     description: "Workshops de Beleza e Comportamento",
   },
   {
+    id: 7,
     year: "2006",
-    image: slide7,
+    imagem_url: slide7,
     description: "Lançamento grife Miss Schuster",
   },
   {
+    id: 8,
     year: "2007",
-    image: slide8,
+    imagem_url: slide8,
     description: "Curso de Fashion Design em Milão, Instituto Marangoni",
   },
   {
+    id: 9,
     year: "2008",
-    image: slide9,
+    imagem_url: slide9,
     description: "Comentarista Miss Universo",
   },
   {
+    id: 10,
     year: "2009",
-    image: slide10,
+    imagem_url: slide10,
     description: "Casamento",
   },
   {
+    id: 11,
     year: "2011",
-    image: slide11,
+    imagem_url: slide11,
     description: "Inauguração do atelier Miss Schuster em Itu",
   },
   {
+    id: 12,
     year: "2013",
-    image: slide12,
+    imagem_url: slide12,
     description: "Quadro Lifestyle Programa Amaury Jr",
   },
   {
+    id: 13,
     year: "2018",
-    image: slide13,
+    imagem_url: slide13,
     description: "Graduação Gastronomia",
   },
   {
+    id: 14,
     year: "2022",
-    image: slide14,
+    imagem_url: slide14,
     description: "Colunista revistas Go Where e Regional",
   },
 ];
 
-export type TimeLine = typeof mockedSlides;
+export interface ITimeLine {
+  id: number;
+  year: string;
+  imagem_url: File | string;
+  description: string;
+  [key: string]: File | string | number;
+}
+
+export interface TimeLineOutput {
+  year: string;
+  imagem_url: string;
+  description: string;
+}
+
+export type TimeLineDTO = typeof mockedSlides;

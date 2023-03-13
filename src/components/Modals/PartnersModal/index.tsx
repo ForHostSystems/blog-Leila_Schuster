@@ -4,7 +4,7 @@ import { BiImage } from "react-icons/bi";
 import { SelectdPartner } from "@/components/Partners";
 import { CreateNewPartnerProps } from "@/services/Home/partners";
 import { convertToUrl } from "@/utils/convertToUrl";
-import { FormLabel, Img } from "@chakra-ui/react";
+import { FormLabel, Img, useToast } from "@chakra-ui/react";
 
 import { BaseModal } from "../BaseModal";
 
@@ -17,6 +17,7 @@ interface PartnersModalProps {
 }
 
 export const PartnersModal = ({ isOpen, onClose, onConfirm, partner, handleChangeImage }: PartnersModalProps) => {
+  const toast = useToast();
   const [previewFile, setPreviewFile] = useState<File | string | null>(null);
 
   const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +33,16 @@ export const PartnersModal = ({ isOpen, onClose, onConfirm, partner, handleChang
         handleChangeImage(previewFile, "imagem_url", partner.position);
       }
       onConfirm(partner?.position, { imagem_url: previewFile as File });
+      onCloseModal();
+    } else if (previewFile == null) {
+      toast({
+        title: "Atenção",
+        description: "Todas as informações precisam estar preenchidas",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
-    onCloseModal();
   };
 
   const onCloseModal = () => {
@@ -48,7 +57,7 @@ export const PartnersModal = ({ isOpen, onClose, onConfirm, partner, handleChang
   }, [partner]);
 
   return (
-    <BaseModal isOpen={isOpen} onClose={onCloseModal} onConfirm={onConfirmModal} title="Parceiros">
+    <BaseModal isOpen={isOpen} onClose={onCloseModal} onConfirm={onConfirmModal} title="Parceiros" isCentered>
       <FormLabel
         as="label"
         w="100%"
