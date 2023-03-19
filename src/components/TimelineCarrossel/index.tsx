@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 
 import { useAuth } from "@/context/auth";
-import { useTimeline } from "@/context/TimelineProvider";
+import { useTimeline } from "@/context/timeline";
 import { ITimeLine } from "@/mocks/mockedSlides";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { Box, VStack, Text, Img, useDisclosure, Button, Skeleton } from "@chakra-ui/react";
@@ -40,8 +40,10 @@ export const TimelineCarrossel = ({ slides }: TimelineCarrosselProps) => {
   };
 
   const onOpenTimelineModal = (moment: ITimeLine, index: number) => {
-    setSelectedMoment({ ...moment, position: index });
-    onOpen();
+    if (authenticated) {
+      setSelectedMoment({ ...moment, position: index });
+      onOpen();
+    }
   };
 
   const onOpenDeleteModal = (id: number) => {

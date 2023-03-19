@@ -60,7 +60,6 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
   });
 
   const [newPresentation, setNewPresentation] = useState<PresentationSetionDTO>({} as PresentationSetionDTO);
-  const [isCancel, setIsCancel] = useState(false);
 
   const handleChangeImage = (image: File, imageKey: string) => {
     setNewPresentation({ ...newPresentation, [imageKey]: image });
@@ -68,13 +67,6 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
 
   const handleChangeDescription = (description: string) => {
     setNewPresentation({ ...newPresentation, description });
-  };
-
-  const resetValues = () => {
-    setIsCancel(true);
-    setNewPresentation(presententionSetionContent);
-    sendData(true);
-    setTimeout(() => setIsCancel(false), 500);
   };
 
   const updatePresentationSetion = () => {
@@ -104,9 +96,7 @@ export const usePresentationSetion = (presententionSetionContent: PresentationSe
   return {
     handleChangeImage,
     handleChangeDescription,
-    resetValues,
     sendData,
-    isCancel,
     isLoading: isLoadingImages || isLoadingDescription,
   };
 };

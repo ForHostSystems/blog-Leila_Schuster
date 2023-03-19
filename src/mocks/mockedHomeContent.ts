@@ -1,14 +1,16 @@
-import { mockedPartners } from "@/mocks/mockedPartners";
-import { mockedPresentationSetion } from "@/mocks/mockedPresentationSetion";
-import { mockedSlides } from "@/mocks/mockedSlides";
-import { mockedTricsPreview } from "@/mocks/mockedTricks";
+import { mockedContact, mockedSocialLinks } from "./mockedFooterContent";
+import { mockedPartners } from "./mockedPartners";
+import { mockedPresentationSetion } from "./mockedPresentationSetion";
+import { mockedSlides } from "./mockedSlides";
+import { mockedTricsPreview } from "./mockedTricks";
 
 export const mockedHomeContent = {
   about: mockedPresentationSetion,
   tricks: mockedTricsPreview,
   sliders: mockedSlides,
   partners: mockedPartners,
-  socialLinks: [],
+  contact: mockedContact,
+  socialLinks: mockedSocialLinks,
 };
 
 export type MockHome = typeof mockedHomeContent;

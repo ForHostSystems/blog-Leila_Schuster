@@ -5,8 +5,8 @@ import { Partners } from "@/components/Partners";
 import { PresentationSetion } from "@/components/PresentationSetion";
 import { TimeLine } from "@/components/TimeLine";
 import { TricksPreview } from "@/components/Tricks/TricksPreview";
-import { TimelineProvider } from "@/context/TimelineProvider";
-import { useHomeContent } from "@/hooks/useHomeContent";
+import { useHomeContent } from "@/context/home";
+import { TimelineProvider } from "@/context/timeline";
 import { mockedHomeContent } from "@/mocks/mockedHomeContent";
 import { Box, Center, Spinner } from "@chakra-ui/react";
 

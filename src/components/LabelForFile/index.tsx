@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -14,7 +14,6 @@ interface LabelForFileProps extends ImgProps {
   mainWidth?: string;
   imageKey: string;
   onSaveImage: (file: File, imageKey: string, position: number | null) => void;
-  isCancel?: boolean;
   accept?: string;
   positionValue?: number | null;
   pages?: number;
@@ -27,7 +26,6 @@ export const LabelForFile = ({
   labelRef,
   imageKey,
   onSaveImage,
-  isCancel = false,
   accept = "image/*",
   positionValue = null,
   pages = 0,
@@ -51,12 +49,6 @@ export const LabelForFile = ({
       setPreviewFile(null);
     }
   };
-
-  useEffect(() => {
-    if (isCancel) {
-      setShowFile(file);
-    }
-  }, [isCancel, file]);
 
   return (
     <Flex direction="column" w={mainWidth}>

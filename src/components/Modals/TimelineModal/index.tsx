@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { BiImage } from "react-icons/bi";
 
 import { SelectedMoment } from "@/components/TimelineCarrossel";
-import { useTimeline } from "@/context/TimelineProvider";
+import { useTimeline } from "@/context/timeline";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { Text, VStack, Img, Input, Textarea, FormLabel, useToast } from "@chakra-ui/react";
 

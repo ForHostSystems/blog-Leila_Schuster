@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useAuth } from "@/context/auth";
-import { useTimeline } from "@/context/TimelineProvider";
+import { useTimeline } from "@/context/timeline";
 import { Button, Heading, useDisclosure, VStack } from "@chakra-ui/react";
 
 import { TimelineModal } from "../Modals/TimelineModal";

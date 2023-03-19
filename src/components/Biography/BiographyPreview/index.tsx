@@ -20,26 +20,17 @@ export const BiographyPreview = ({
   descriptionValue,
   onChangeDescription,
   onSaveImage,
-  isCancel = false,
 }: BiographyPreviewProps) => {
   return (
     <SimpleGrid as="section" id="biografia" columns={2} spacing={5} w="100%" mt={10}>
       <Stack gap="10px">
-        <LabelForFile
-          file={imageTop}
-          labelRef="imageBioTop"
-          labelWidth="100%"
-          onSaveImage={onSaveImage}
-          imageKey="imagem2_url"
-          isCancel={isCancel}
-        />
+        <LabelForFile file={imageTop} labelRef="imageBioTop" labelWidth="100%" onSaveImage={onSaveImage} imageKey="imagem2_url" />
         <LabelForFile
           file={imageBottom}
           labelRef="imageBioBottom"
           labelWidth="100%"
           onSaveImage={onSaveImage}
           imageKey="imagem3_url"
-          isCancel={isCancel}
         />
       </Stack>
       <HStack w="100%" align="start" justify="end">
@@ -64,7 +55,6 @@ export const BiographyPreview = ({
               fontWeight={500}
               handleChange={onChangeDescription}
               textValue={descriptionValue}
-              isCancel={isCancel}
             />
           </Flex>
         </Stack>
