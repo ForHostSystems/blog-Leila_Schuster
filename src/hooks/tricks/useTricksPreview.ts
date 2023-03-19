@@ -15,7 +15,7 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
   const toast = useToast();
 
   const { mutate: sendTrickPreview, isLoading: isLoadingTrickPreview } = useMutation<
-    TricksPreviewDTO[0],
+    TricksPreviewDTO,
     Error,
     TricksPreviewTextsDTO
   >(updateTrickPreview, {
@@ -39,10 +39,10 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
     },
   });
 
-  const { mutate: sendFiles, isLoading: isLoadingImages } = useMutation<TricksPreviewDTO[0], Error, TricksPreviewFilesDTO>(
+  const { mutate: sendFiles, isLoading: isLoadingImages } = useMutation<TricksPreviewDTO, Error, TricksPreviewFilesDTO>(
     updateTricksPreviewFiles,
     {
-      onSuccess: (data: TricksPreviewDTO[0], { id }) => {
+      onSuccess: (data: TricksPreviewDTO, { id }) => {
         let pos: number | null = null;
         newTricksPreview.filter((value, index) => {
           if (value.id == id) pos = index;
@@ -90,13 +90,16 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
   const handleChangeImage = (image: File, imageKey: string, position: number | null) => {
     if (position != null) {
       newTricksPreview[position][imageKey] = image;
+      if (imageKey == "arquivo_url") {
+        newTricksPreview[position].video_url = null;
+      }
       setNewTricksPreview([...newTricksPreview]);
     }
   };
 
   const sendData = (position: number) => {
     const body = {
-      arquivo_url: newTricksPreview[position].video_url.length > 0 ? "" : newTricksPreview[position].arquivo_url,
+      arquivo_url: newTricksPreview[position].arquivo_url,
       imagem_url: newTricksPreview[position].imagem_url,
       id: newTricksPreview[position].id,
     };

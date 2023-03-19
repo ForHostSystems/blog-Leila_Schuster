@@ -3,9 +3,37 @@ import { AiFillYoutube, AiOutlineTwitter } from "react-icons/ai";
 import { SlSocialInstagram } from "react-icons/sl";
 import { TfiFacebook } from "react-icons/tfi";
 
-import { Box, Center, Circle, Heading, HStack, SimpleGrid, Text, Flex, Divider } from "@chakra-ui/react";
+import { useAuth } from "@/context/auth";
+import { useHomeContent } from "@/context/home";
+import { useFooter } from "@/hooks/useFooter";
+import { Box, Center, Circle, Heading, HStack, SimpleGrid, Text, Flex, Divider, Skeleton } from "@chakra-ui/react";
+
+import { ContactPopover } from "../ContactPopover";
+import { PopoverSocialLink } from "../PopoverSocialLink";
+
+export type IconTypes = "instagram" | "facebook" | "youtube" | "twitter";
 
 export const Footer = () => {
+  const { authenticated } = useAuth();
+  const { data, isLoading } = useHomeContent();
+  const {
+    handleChangeText,
+    handleChangeSocialLink,
+    sendDataContact,
+    sendDataSocialLinks,
+    onCancelContact,
+    onCancelSocialLinks,
+    isLoading: isLoadingFooter,
+  } = useFooter();
+  const { contact, socialLinks } = data;
+
+  const renderSocialIcon = {
+    instagram: <SlSocialInstagram color="black" size="22px" />,
+    facebook: <TfiFacebook color="black" size="22px" />,
+    youtube: <AiFillYoutube color="black" size="22px" />,
+    twitter: <AiOutlineTwitter color="black" size="22px" />,
+  };
+
   return (
     <Center
       w={{ sm: "98.7vw", xl: "calc(100vw - 20px)" }}
@@ -39,63 +67,53 @@ export const Footer = () => {
           </Heading>
 
           <Flex direction="column" align="center">
+            {authenticated && (
+              <ContactPopover
+                placement="bottom-start"
+                onChangeText={handleChangeText}
+                onConfirm={sendDataContact}
+                onCancel={onCancelContact}
+              />
+            )}
             <Text fontSize="1.8rem" fontWeight={300} color="white">
               E-mail
             </Text>
-            <Text fontSize="1.6rem" fontWeight={300} color="white">
-              contato@leilaschuster.com.br
-            </Text>
-            <Text fontSize="1.6rem" fontWeight={300} color="white">
-              leila@leilaschuster.com.br
-            </Text>
+            <Skeleton isLoaded={!isLoading || !isLoadingFooter}>
+              <Text fontSize="1.6rem" fontWeight={300} color="white">
+                {contact.email}
+              </Text>
+            </Skeleton>
+            <Skeleton isLoaded={!isLoading || !isLoadingFooter}>
+              <Text fontSize="1.6rem" fontWeight={300} color="white">
+                {contact.email2}
+              </Text>
+            </Skeleton>
             <Text fontSize="1.8rem" fontWeight={300} letterSpacing={3} color="white" mt={4}>
               Assessoria
             </Text>
-            <Text fontSize="1.8rem" fontWeight={300} color="white" letterSpacing={1}>
-              9 9999-9999
-            </Text>
+            <Skeleton isLoaded={!isLoading || !isLoadingFooter}>
+              <Text fontSize="1.8rem" fontWeight={300} color="white" letterSpacing={1}>
+                {contact.telefone}
+              </Text>
+            </Skeleton>
 
             <HStack gap={2} mt={10}>
-              <Circle
-                as="a"
-                href="https://www.instagram.com/leilaschuster/"
-                target="_blank"
-                borderRadius="full"
-                bg="white"
-                size="35px"
-                cursor="pointer">
-                <SlSocialInstagram color="black" size="22px" />
-              </Circle>
-              <Circle
-                as="a"
-                href="https://www.facebook.com/leila.schuster"
-                target="_blank"
-                borderRadius="full"
-                bg="white"
-                size="35px"
-                cursor="pointer">
-                <TfiFacebook color="black" size="22px" />
-              </Circle>
-              <Circle
-                as="a"
-                href="https://www.youtube.com/LeilaSchuster"
-                target="_blank"
-                borderRadius="full"
-                bg="white"
-                size="35px"
-                cursor="pointer">
-                <AiFillYoutube color="black" size="22px" />
-              </Circle>
-              <Circle
-                as="a"
-                href="https://twitter.com/LeilaSchusterG"
-                target="_blank"
-                borderRadius="full"
-                bg="white"
-                size="35px"
-                cursor="pointer">
-                <AiOutlineTwitter color="black" size="22px" />
-              </Circle>
+              {socialLinks.map((value, index) => (
+                <Flex key={value.id} direction="column" alignItems="center" justify="center" gap={2}>
+                  {authenticated && (
+                    <PopoverSocialLink
+                      position={index}
+                      type={value.type as IconTypes}
+                      handleChangeSocialLink={handleChangeSocialLink}
+                      onConfirm={sendDataSocialLinks}
+                      onCancel={onCancelSocialLinks}
+                    />
+                  )}
+                  <Circle as="a" href={value.link} target="_blank" borderRadius="full" bg="white" size="35px" cursor="pointer">
+                    {renderSocialIcon[value.type as IconTypes]}
+                  </Circle>
+                </Flex>
+              ))}
             </HStack>
           </Flex>
         </Flex>

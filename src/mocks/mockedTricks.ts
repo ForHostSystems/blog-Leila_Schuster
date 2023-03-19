@@ -13,7 +13,7 @@ export const mockedTricsPreview = [
     edition: "Edição n° xxx - 00/00",
     imagem_url: logoRegional,
     arquivo_url: pdf,
-    video_url: "",
+    video_url: null,
     video_description: "",
   },
   {
@@ -23,7 +23,7 @@ export const mockedTricsPreview = [
     edition: "Edição n° xxx - 00/00",
     imagem_url: logoGoWhere,
     arquivo_url: pdf,
-    video_url: "",
+    video_url: null,
     video_description: "",
   },
 ];
@@ -33,11 +33,11 @@ export interface TricksPreviewDTO {
   title: string;
   revue: string;
   edition: string;
-  imagem_url: string | File;
-  arquivo_url: string | File;
-  video_url: string;
+  imagem_url: string | File | null;
+  arquivo_url: string | File | null;
+  video_url: string | null;
   video_description: string;
-  [key: string]: string | File;
+  [key: string]: string | File | null;
 }
 
 export const mockedTrics = [

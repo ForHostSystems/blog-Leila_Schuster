@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 
+import PicturePlaceholder from "@/assets/Pcture-Placeholder.png";
 import { CustomSpace } from "@/components/CustomSpace";
 import { EditableText } from "@/components/EditableText";
 import { EditableVideo } from "@/components/EditableVideo";
@@ -26,7 +27,7 @@ export const TricksPreviewContent = ({
   isLoading,
 }: TricksPreviewContentProps) => {
   const { authenticated } = useAuth();
-  const [selectedOption, setSelectedOption] = useState<"pdf" | "video">(content.arquivo_url.length > 0 ? "pdf" : "video");
+  const [selectedOption, setSelectedOption] = useState<"pdf" | "video">(content.arquivo_url ? "pdf" : "video");
 
   const revueOrDescription = useMemo(
     () =>
@@ -35,11 +36,6 @@ export const TricksPreviewContent = ({
         : { value: content.video_description, key: "video_description" },
     [content, selectedOption],
   );
-
-  // const onChangeOption = (option: "pdf" | "video") => {
-  //   setSelectedOption(option);
-  //   handleChangeText(option, order, "showing");
-  // };
 
   return (
     <Box w="100%" _last={{ mt: 56 }} border={authenticated ? "1px dashed #777" : ""}>
@@ -93,7 +89,7 @@ export const TricksPreviewContent = ({
           {selectedOption == "pdf" && (
             <CustomSpace px={7}>
               <LabelForFile
-                file={content.imagem_url}
+                file={content.imagem_url ?? PicturePlaceholder}
                 labelRef={`logo-revista-${order}`}
                 alt="logo revista"
                 w={{ lg: "250px", xl: "280px" }}
