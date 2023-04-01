@@ -10,7 +10,7 @@ export const Blog = () => {
   const { state } = useLocation();
   return (
     <>
-      <BlogContent content={state.blogContent as MockedBlogContentProps} blogOnly />
+      {/* <BlogContent content={state.blogContent as MockedBlogContentProps} blogOnly /> */}
       <Divider w="100%" h="0.063rem" bg="black" mt={2.5} />
       <SeeMore data={mockedBlogContent} />
     </>
