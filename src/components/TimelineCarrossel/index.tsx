@@ -1,3 +1,8 @@
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./styles.css";
+
 import React, { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
@@ -6,17 +11,12 @@ import { useAuth } from "@/context/auth";
 import { useTimeline } from "@/context/timeline";
 import { ITimeLine } from "@/mocks/mockedSlides";
 import { convertToUrl } from "@/utils/convertToUrl";
+import { sortBy } from "@/utils/sortBy";
 import { Box, VStack, Text, Img, useDisclosure, Button, Skeleton } from "@chakra-ui/react";
 import { Navigation, Autoplay, FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { TimelineModal } from "../Modals/TimelineModal";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./styles.css";
-import { sortBy } from "@/utils/sortBy";
 
 interface TimelineCarrosselProps {
   slides: ITimeLine[];

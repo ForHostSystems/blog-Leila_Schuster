@@ -93,4 +93,14 @@ export const mockedBlogContent = [
   },
 ];
 
+export interface BlogListDTO {
+  id: number;
+  imagem1_url: string;
+  imagem2_url: string;
+  title: string;
+  content: string;
+  tags: string;
+  [key: string]: string | number;
+}
+
 export type BlogContentDTO = typeof mockedBlogContent;
