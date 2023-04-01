@@ -7,7 +7,7 @@ import { PartnersDTO, PartnersOutput } from "@/mocks/mockedPartners";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { Button, Flex, HStack, Img, Skeleton, useDisclosure } from "@chakra-ui/react";
 
-import { DeletePartnerModal } from "../Modals/DeletePartnersModal";
+import { ModalDelete } from "../Modals/ModalDelete";
 import { PartnersModal } from "../Modals/PartnersModal";
 import { Title } from "../Title";
 
@@ -88,11 +88,12 @@ export const Partners = ({ partners }: PartnersProps) => {
         ))}
       </HStack>
 
-      <DeletePartnerModal
+      <ModalDelete
         isOpen={isOpenModalDelete}
         onClose={onCloseDeletePartnerModal}
         onConfirm={onDeleteImage}
         id={idForDelete}
+        text="Tem certeza que deseja deletar essa imagem?"
       />
 
       <PartnersModal

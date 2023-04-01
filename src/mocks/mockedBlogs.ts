@@ -26,4 +26,4 @@ export const mockedBlogs = [
   },
 ];
 
-export type BlogsDTO = typeof mockedBlogs;
+export type BlogsDTOMock = typeof mockedBlogs;
