@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 import { BlogPreview } from "@/components/Blog/BlogPreview";
 import { Partners } from "@/components/Partners";
@@ -23,6 +24,9 @@ export function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Leila Schuster</title>
+      </Helmet>
       <PresentationSetion presententionSetionContent={data?.about ?? mockedHomeContent.about} />
       <TimelineProvider moments={data?.sliders ?? mockedHomeContent.sliders}>
         <TimeLine />

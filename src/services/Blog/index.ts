@@ -1,4 +1,4 @@
-import { BlogListDTO } from "@/mocks/mockedBlogContent";
+import { BlogListDTO } from "@/interfaces/blog";
 
 import { api } from "../api";
 

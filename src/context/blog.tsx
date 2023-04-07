@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 
-import { BlogListDTO } from "@/mocks/mockedBlogContent";
+import { BlogListDTO } from "@/interfaces/blog";
 import { addNewPost, deletePost, getBlogContent, IBlog, updatePost } from "@/services/Blog";
 import { useToast } from "@chakra-ui/react";
 

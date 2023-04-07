@@ -6,13 +6,13 @@ import { EditableText } from "@/components/EditableText";
 import { EditableVideo } from "@/components/EditableVideo";
 import { LabelForFile } from "@/components/LabelForFile";
 import { useAuth } from "@/context/auth";
-import { TricksPreviewOutput } from "@/mocks/mockedTricks";
+import { TricksPreviewOutput } from "@/interfaces/tricks";
 import { Flex, VStack, Box, Button, HStack } from "@chakra-ui/react";
 
 interface TricksPreviewContentProps {
   content: TricksPreviewOutput[0];
   order: number;
-  handleChangeText: (text: string, position: number | null, field: string) => void;
+  handleChangeText: (text: string, field: string, position: number | null) => void;
   handleChangeImage: (image: File, imageKey: string, position: number | null) => void;
   sendData: (position: number) => void;
   isLoading: boolean;

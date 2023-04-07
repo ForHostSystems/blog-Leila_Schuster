@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 import { BlogContent } from "@/components/Blog/BlogContent";
 import { BlogModal } from "@/components/Modals/BlogModal";
@@ -17,6 +18,9 @@ export const Blogs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Blog | Leila Schuster</title>
+      </Helmet>
       <Title dashWidth="3rem" dashHeigth="7px" as="h1" fontSize="5rem" fontWeight={900} ml="0.25rem">
         Blog
       </Title>

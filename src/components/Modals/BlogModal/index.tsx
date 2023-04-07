@@ -5,7 +5,7 @@ import { BiImage } from "react-icons/bi";
 import { BlogContent } from "@/components/Blog/BlogContent";
 import Editor from "@/components/Editor";
 import { useBlog } from "@/context/blog";
-import { BlogListDTO } from "@/mocks/mockedBlogContent";
+import { BlogListDTO } from "@/interfaces/blog";
 import { IBlog } from "@/services/Blog";
 import { theme } from "@/styles/theme";
 import { convertToUrl } from "@/utils/convertToUrl";

@@ -1,4 +1,4 @@
-import { TricksPreviewDTO } from "@/mocks/mockedTricks";
+import { TricksPreviewDTO } from "@/interfaces/tricks";
 import { api } from "@/services/api";
 
 export interface TricksPreviewFilesDTO {

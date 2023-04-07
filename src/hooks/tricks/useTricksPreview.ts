@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 
-import { TricksPreviewDTO, TricksPreviewOutput } from "@/mocks/mockedTricks";
+import { TricksPreviewDTO, TricksPreviewOutput } from "@/interfaces/tricks";
 import { useToast } from "@chakra-ui/react";
 
 import {

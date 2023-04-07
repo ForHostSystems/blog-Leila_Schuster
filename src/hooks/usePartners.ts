@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 
-import { PartnersDTO, PartnersOutput } from "@/mocks/mockedPartners";
+import { PartnersDTO, PartnersOutput } from "@/interfaces/partners";
 import { createNewPartner, deletePartner, updatePartners } from "@/services/Home/partners";
 import { useToast } from "@chakra-ui/react";
 

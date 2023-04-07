@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { BlogContent } from "@/components/Blog/BlogContent";
 import { SeeMore } from "@/components/SeeMore";
-import { mockedBlogContent, MockedBlogContentProps } from "@/mocks/mockedBlogContent";
+import { mockedBlogContent } from "@/mocks/mockedBlogContent";
 import { Divider } from "@chakra-ui/react";
 
 export const Blog = () => {

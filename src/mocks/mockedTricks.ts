@@ -28,18 +28,6 @@ export const mockedTricsPreview = [
   },
 ];
 
-export interface TricksPreviewDTO {
-  id: string;
-  title: string;
-  revue: string;
-  edition: string;
-  imagem_url: string | File | null;
-  arquivo_url: string | File | null;
-  video_url: string | null;
-  video_description: string;
-  [key: string]: string | File | null;
-}
-
 export const mockedTrics = [
   {
     cover: dicas_img2,
@@ -64,6 +52,3 @@ export const mockedTrics = [
     pdf,
   },
 ];
-
-export type TricksPreviewOutput = typeof mockedTricsPreview;
-export type TricksDTO = typeof mockedTrics;

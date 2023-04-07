@@ -1,4 +1,4 @@
-import { PartnersDTO } from "@/mocks/mockedPartners";
+import { PartnersDTO } from "@/interfaces/partners";
 import { api } from "@/services/api";
 
 export interface CreateNewPartnerProps {

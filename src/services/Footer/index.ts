@@ -1,4 +1,4 @@
-import { ContactDTO, ISocialLinks } from "@/mocks/mockedFooterContent";
+import { ContactDTO, ISocialLinks } from "@/interfaces/footer";
 import { api } from "@/services/api";
 
 const updateContact = async (contact: ContactDTO): Promise<ContactDTO> => {

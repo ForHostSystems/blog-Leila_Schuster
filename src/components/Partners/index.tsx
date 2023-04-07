@@ -3,7 +3,7 @@ import { MdDelete } from "react-icons/md";
 
 import { useAuth } from "@/context/auth";
 import { usePartners } from "@/hooks/usePartners";
-import { PartnersDTO, PartnersOutput } from "@/mocks/mockedPartners";
+import { PartnersDTO, PartnersOutput } from "@/interfaces/partners";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { Button, Flex, HStack, Img, Skeleton, useDisclosure } from "@chakra-ui/react";
 
