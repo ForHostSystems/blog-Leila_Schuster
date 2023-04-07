@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 
-import { PresentationSetionDTO, PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
+import { PresentationSetionDTO, PresentationSetionOutput } from "@/interfaces/presentationSetion";
 import {
   PresentationSetionDescriptionOutput,
   PresentationSetionImagesDTO,

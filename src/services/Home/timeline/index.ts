@@ -1,4 +1,4 @@
-import { ITimeLine } from "@/mocks/mockedSlides";
+import { ITimeLine } from "@/interfaces/timeline";
 import { api } from "@/services/api";
 
 export interface CreateNewMomentProps {
@@ -10,11 +10,12 @@ export interface CreateNewMomentProps {
 const updateTimeline = async (props: ITimeLine): Promise<ITimeLine> => {
   const formData = new FormData();
   formData.append("home_id", "1");
-  Object.entries(props).forEach(([value, key]) => {
-    if (typeof value == "object") {
-      formData.append("imagem", value);
-    } else if (key != "id") {
-      formData.append(key as string, value);
+  Object.entries(props).forEach(([key, value]) => {
+    if (key != "id" && typeof value != "number") {
+      if (key.includes("imagem")) {
+        formData.append("imagem", value);
+      }
+      formData.append(key, value);
     }
   });
 

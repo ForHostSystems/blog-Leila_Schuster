@@ -3,7 +3,7 @@ import React from "react";
 import logoLS from "@/assets/logo-LS.png";
 import { Title } from "@/components/Title";
 import { useTricksPreview } from "@/hooks/tricks/useTricksPreview";
-import { TricksPreviewOutput } from "@/mocks/mockedTricks";
+import { TricksPreviewOutput } from "@/interfaces/tricks";
 import { Flex, Img, VStack } from "@chakra-ui/react";
 
 import { TricksPreviewContent } from "./TricksPreviewContent";

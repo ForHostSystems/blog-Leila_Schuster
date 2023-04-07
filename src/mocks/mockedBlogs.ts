@@ -25,5 +25,3 @@ export const mockedBlogs = [
     image: capaBeleza,
   },
 ];
-
-export type BlogsDTOMock = typeof mockedBlogs;

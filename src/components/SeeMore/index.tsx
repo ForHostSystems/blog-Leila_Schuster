@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MockedBlogContentProps } from "@/mocks/mockedBlogContent";
+import { MockedBlogContentProps } from "@/interfaces/blog";
 import { Box, Flex, Img, Link, Text } from "@chakra-ui/react";
 
 import { Title } from "../Title";

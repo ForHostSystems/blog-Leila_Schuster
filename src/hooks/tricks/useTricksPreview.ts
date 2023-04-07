@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "react-query";
 
-import { TricksPreviewDTO, TricksPreviewOutput } from "@/mocks/mockedTricks";
+import { TricksPreviewDTO, TricksPreviewOutput } from "@/interfaces/tricks";
 import { useToast } from "@chakra-ui/react";
 
 import {
@@ -80,7 +80,7 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
 
   const [newTricksPreview, setNewTricksPreview] = useState<TricksPreviewDTO[]>(tricksPreviewContent);
 
-  const handleChangeText = (text: string, position: number | null, field: string) => {
+  const handleChangeText = (text: string, field: string, position: number | null) => {
     if (position != null) {
       newTricksPreview[position][field] = text;
       setNewTricksPreview([...newTricksPreview]);

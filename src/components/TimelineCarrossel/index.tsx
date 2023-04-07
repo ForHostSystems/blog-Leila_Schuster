@@ -9,7 +9,7 @@ import { MdDelete } from "react-icons/md";
 
 import { useAuth } from "@/context/auth";
 import { useTimeline } from "@/context/timeline";
-import { ITimeLine } from "@/mocks/mockedSlides";
+import { ITimeLine } from "@/interfaces/timeline";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { sortBy } from "@/utils/sortBy";
 import { Box, VStack, Text, Img, useDisclosure, Button, Skeleton } from "@chakra-ui/react";

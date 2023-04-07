@@ -8,7 +8,7 @@ import { Box, Button, HStack, Input } from "@chakra-ui/react";
 interface EditableVideoProps {
   url: string;
   positionValue?: number | null;
-  handleChange: (text: string, position: number | null, field: string) => void;
+  handleChange: (text: string, field: string, position: number | null) => void;
 }
 
 export const EditableVideo = ({ url, positionValue = null, handleChange }: EditableVideoProps) => {
@@ -22,11 +22,11 @@ export const EditableVideo = ({ url, positionValue = null, handleChange }: Edita
 
   const onSave = () => {
     setLinkToShow(link);
-    handleChange(link, positionValue, "video_url");
+    handleChange(link, "video_url", positionValue);
   };
 
   const resetValue = () => {
-    handleChange(url, positionValue, "video_url");
+    handleChange(url, "video_url", positionValue);
     setLink(url);
     setLinkToShow(url);
     onSave();

@@ -3,7 +3,7 @@ import React from "react";
 import logoHome from "@/assets/logo-home.png";
 import { useAuth } from "@/context/auth";
 import { usePresentationSetion } from "@/hooks/usePresentationSetion";
-import { PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
+import { PresentationSetionOutput } from "@/interfaces/presentationSetion";
 import { Box, Button, Flex, Img, SimpleGrid, Stack } from "@chakra-ui/react";
 
 import { BiographyPreview } from "../Biography/BiographyPreview";

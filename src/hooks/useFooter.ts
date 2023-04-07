@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation } from "react-query";
 
 import { useHomeContent } from "@/context/home";
-import { ContactDTO, ISocialLinks } from "@/mocks/mockedFooterContent";
+import { ContactDTO, ISocialLinks } from "@/interfaces/footer";
 import { updateContact, updateSocialLink } from "@/services/Footer";
 import { useToast } from "@chakra-ui/react";
 

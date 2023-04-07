@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { useMutation } from "react-query";
 
-import { ITimeLine, TimeLineDTO } from "@/mocks/mockedSlides";
+import { ITimeLine, TimeLineDTO } from "@/interfaces/timeline";
 import { createNewMoment, CreateNewMomentProps, deleteMoment, updateTimeline } from "@/services/Home/timeline";
 import { useToast } from "@chakra-ui/react";
 

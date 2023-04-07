@@ -9,7 +9,7 @@ import { TextareaAutoResize } from "../TextareaAutoResize";
 
 interface EditableTextProps extends TextProps {
   element: "Heading" | "Text";
-  handleChange: (text: string, position: number | null, field: string) => void;
+  handleChange: (text: string, field: string, position: number | null) => void;
   textValue: string;
   isCancel?: boolean;
   positionValue?: number | null;
@@ -40,13 +40,13 @@ export const EditableText = ({
 
   const onSaveDescription = () => {
     setIsSaved(true);
-    handleChange(description, positionValue, field);
+    handleChange(description, field, positionValue);
     setTimeout(() => setIsSaved(false), 1000);
   };
 
   const resetValue = () => {
     setDescription(textValue);
-    handleChange(textValue, positionValue, field);
+    handleChange(textValue, field, positionValue);
   };
 
   useEffect(() => {
@@ -60,6 +60,10 @@ export const EditableText = ({
       {authenticated ? (
         <Flex direction="column" w="100%">
           <TextareaAutoResize
+            maxW={props.maxW}
+            minW={props.minW}
+            mt={props.mt}
+            lineHeight={props.lineHeight}
             color={props.color}
             fontSize={props.fontSize}
             p={props.p}

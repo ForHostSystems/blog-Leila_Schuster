@@ -3,7 +3,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { RiCloseLine } from "react-icons/ri";
 
 import { useAuth } from "@/context/auth";
-import { Button, Flex, FormLabel, HStack, Img, ImgProps } from "@chakra-ui/react";
+import { Button, Flex, FormLabel, HStack, Img, ImgProps, useToast } from "@chakra-ui/react";
 
 import { PreviewPDF } from "../PreviewPDF";
 
@@ -31,14 +31,26 @@ export const LabelForFile = ({
   pages = 0,
   ...props
 }: LabelForFileProps) => {
+  const toast = useToast();
   const { authenticated } = useAuth();
   const [showFile, setShowFile] = useState(file);
   const [previewFile, setPreviewFile] = useState<File | null>(null);
 
   const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target?.files != null) {
-      setPreviewFile(e.target.files[0]);
-      e.target.value = "";
+      const fileSize = Math.round(e.target.files[0].size / 1024 / 1024);
+      if (fileSize >= 5) {
+        toast({
+          title: "ATENÇÂO!",
+          description: "O arquivo não pode exceder o tamanho de 5mb!",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        setPreviewFile(e.target.files[0]);
+        e.target.value = "";
+      }
     }
   };
 

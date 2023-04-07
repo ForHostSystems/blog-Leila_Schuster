@@ -11,7 +11,7 @@ import { ModalDelete } from "@/components/Modals/ModalDelete";
 import { MostRead } from "@/components/MostRead";
 import { useAuth } from "@/context/auth";
 import { useBlog } from "@/context/blog";
-import { BlogListDTO } from "@/mocks/mockedBlogContent";
+import { BlogListDTO } from "@/interfaces/blog";
 import { convertToUrl } from "@/utils/convertToUrl";
 import { Box, ButtonGroup, Divider, Flex, IconButton, Img, Text, useDisclosure } from "@chakra-ui/react";
 import DOMPurify from "dompurify";
