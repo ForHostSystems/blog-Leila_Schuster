@@ -80,7 +80,7 @@ export const useTricksPreview = (tricksPreviewContent: TricksPreviewOutput) => {
 
   const [newTricksPreview, setNewTricksPreview] = useState<TricksPreviewDTO[]>(tricksPreviewContent);
 
-  const handleChangeText = (text: string, position: number | null, field: string) => {
+  const handleChangeText = (text: string, field: string, position: number | null) => {
     if (position != null) {
       newTricksPreview[position][field] = text;
       setNewTricksPreview([...newTricksPreview]);
