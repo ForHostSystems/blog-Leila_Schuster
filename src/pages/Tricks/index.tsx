@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 import { TricksContent } from "@/components/Tricks/TricksContent";
 import { TricksCover } from "@/components/Tricks/TricksCover";
+import { Center } from "@chakra-ui/react";
 
 export function Tricks() {
   return (
@@ -11,7 +12,9 @@ export function Tricks() {
         <title>Dicas | Leila Schuster</title>
       </Helmet>
       <TricksCover />
-      <TricksContent />
+      <Center flexDirection="column" w="100%" mt={10} mb={52}>
+        <TricksContent />
+      </Center>
     </>
   );
 }

@@ -13,20 +13,22 @@ export interface IBlog {
 }
 
 const getBlogContent = async (page: number): Promise<BlogListDTO[]> => {
-  const { data } = await api.get(`/post/home/1?limit=10&page=${page}`);
+  const { data } = await api.get(`/post/home/1?limit=2&page=${page}`);
 
   return data;
 };
 
 const addNewPost = async (post: IBlog): Promise<BlogListDTO> => {
+  console.log(post);
   const formData = new FormData();
   formData.append("home_id", "1");
   Object.entries(post).forEach(([key, value]) => {
     if (key != "id" && typeof value != "undefined" && typeof value != "number") {
-      if (key.includes("imagem")) {
+      if (typeof value == "object") {
         formData.append(key.split("_")[0], value);
+      } else {
+        formData.append(key, value);
       }
-      formData.append(key, value);
     }
   });
 
@@ -46,8 +48,9 @@ const updatePost = async (post: IBlog): Promise<BlogListDTO | undefined> => {
     if (key != "id" && typeof value != "undefined" && typeof value != "number") {
       if (key.includes("imagem")) {
         formData.append(key.split("_")[0], value);
+      } else {
+        formData.append(key, value);
       }
-      formData.append(key, value);
     }
   });
 
@@ -68,4 +71,10 @@ const deletePost = async (id: number): Promise<BlogListDTO> => {
   return data;
 };
 
-export { getBlogContent, addNewPost, updatePost, deletePost };
+const getPostBySlug = async (slug: string): Promise<BlogListDTO> => {
+  const { data } = await api.get(`/post/slug/${slug}`);
+
+  return data;
+};
+
+export { getBlogContent, addNewPost, updatePost, deletePost, getPostBySlug };

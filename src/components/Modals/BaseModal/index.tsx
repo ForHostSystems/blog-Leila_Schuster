@@ -16,9 +16,19 @@ interface BaseModalProps extends ModalProps {
   onConfirm?: () => void;
   title?: string;
   isPreview?: boolean;
+  blogPage?: boolean;
 }
 
-export const BaseModal = ({ isOpen, onClose, onConfirm, title, isPreview, children, ...props }: BaseModalProps) => {
+export const BaseModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  isPreview = false,
+  blogPage = false,
+  children,
+  ...props
+}: BaseModalProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} {...props}>
       <ModalOverlay />
@@ -32,7 +42,7 @@ export const BaseModal = ({ isOpen, onClose, onConfirm, title, isPreview, childr
             {isPreview ? "Voltar" : "Fechar"}
           </Button>
           <Button colorScheme="green" variant="ghost" onClick={onConfirm}>
-            {!isPreview ? "Preview" : "Confirmar"}
+            {!isPreview && blogPage ? "Preview" : "Confirmar"}
           </Button>
         </ModalFooter>
       </ModalContent>

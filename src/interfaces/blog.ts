@@ -22,6 +22,7 @@ export interface BlogListDTO {
   imagem2_url: string;
   title: string;
   content: string;
+  slug: string;
   tags: string;
   [key: string]: string | number;
 }

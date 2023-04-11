@@ -120,8 +120,11 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
       if (post) {
         sendData({ ...body, id: post.id } as IBlog, true);
       } else {
-        sendData(body as IBlog, true);
+        sendData(body as IBlog);
       }
+
+      onClose();
+      setIsPreview(false);
     }
   };
 
@@ -149,7 +152,14 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
   }, [post]);
 
   return (
-    <BaseModal isOpen={isOpen} onClose={handleClose} size="full" title="Blog" isPreview={isPreview} onConfirm={onConfirm}>
+    <BaseModal
+      isOpen={isOpen}
+      onClose={handleClose}
+      size="full"
+      title="Blog"
+      isPreview={isPreview}
+      blogPage
+      onConfirm={onConfirm}>
       {!isPreview ? (
         <>
           <Heading>Imagens de capa:</Heading>
@@ -194,7 +204,11 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
       ) : (
         <Flex w="100%" direction="column" justify="center" align="center" bg="background">
           <Box w="100%" maxW={{ sm, md, lg, xl }} p="20px">
-            <BlogContent blog={{ ...fields, id: 0, home_id: 1, tags: tags.join(",") } as BlogListDTO} isFirst />
+            <BlogContent
+              blog={{ ...fields, id: 0, home_id: 1, tags: tags.join(","), slug: post?.slug } as BlogListDTO}
+              isFirst
+              isPreview
+            />
           </Box>
         </Flex>
       )}
