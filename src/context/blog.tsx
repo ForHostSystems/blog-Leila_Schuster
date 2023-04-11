@@ -9,6 +9,7 @@ interface BlogContextProps {
   data: BlogListDTO[] | [];
   sendData: (post: IBlog, isUpdate?: boolean) => void;
   isLoading: boolean;
+  isLoadingUpdate: boolean;
   page: number;
   onChangePage: (page: number) => void;
   onDeletePost: (id: number) => void;
@@ -107,7 +108,7 @@ export const BlogProvider = ({ children }: BlogProviderProps) => {
   });
 
   const sendData = (post: IBlog, isUpdate?: boolean) => {
-    if (update) {
+    if (isUpdate) {
       update(post);
     } else {
       addPost(post);
@@ -138,7 +139,8 @@ export const BlogProvider = ({ children }: BlogProviderProps) => {
       value={{
         data: data ?? [],
         sendData,
-        isLoading: isLoading || isLoadingNewPost || isLoadingDelete || isLoadingUpdate,
+        isLoading,
+        isLoadingUpdate: isLoadingUpdate || isLoadingNewPost || isLoadingDelete,
         page,
         onChangePage,
         onDeletePost,

@@ -7,12 +7,12 @@ import { Box, Center, Flex, Heading, Img, Text, VStack } from "@chakra-ui/react"
 
 export const TricksContent = () => {
   return (
-    <Center flexDirection="column" w="100%" mt={10} mb={52}>
+    <>
       {mockedTrics.map((value, index) => (
         <Flex key={index} direction="column" align="center" w="100%" mt={52} _first={{ mt: 0 }}>
           <Flex justify="space-between" bg="whte" gap={5}>
             <Img
-              src={value.cover}
+              src={value.imagem1_url}
               alt="capa de uma revista com a Leila Schuster"
               w={{ lg: "450px", xl: "600px" }}
               order={index % 2 == 0 ? 0 : 1}
@@ -20,7 +20,7 @@ export const TricksContent = () => {
 
             <Flex align="start">
               <Img
-                src={value.photo}
+                src={value.imagem2_url}
                 alt="capa de uma revista com a Leila Schuster"
                 w={{ lg: "150px", xl: "250px" }}
                 h="auto"
@@ -33,7 +33,7 @@ export const TricksContent = () => {
                       {value.title}
                     </Heading>
                     <Text color="white" fontSize={{ lg: "1.5rem", xl: "2.4rem" }} fontWeight={400}>
-                      {value.subtitle}
+                      {value.revue}
                     </Text>
                   </Box>
                 </Center>
@@ -49,16 +49,16 @@ export const TricksContent = () => {
             </Flex>
           </Flex>
 
-          <PreviewPDF w="80%" overflow="auto" maxH="630px" mt={40} file={value.pdf} pages={1} />
+          <PreviewPDF w="80%" overflow="auto" maxH="630px" mt={40} file={value.arquivo_url} pages={1} />
 
           <Flex align="center" gap={20} mt={20}>
             <Text fontSize={{ lg: "1.7rem", xl: "2rem" }}>{value.edition}</Text>
             <CustomSpace px={7}>
-              <Img src={value.logo} alt="logo revista regional (Regional)" w={{ lg: "250px", xl: "280px" }} />
+              <Img src={value.revue_imagem_url} alt="logo revista regional (Regional)" w={{ lg: "250px", xl: "280px" }} />
             </CustomSpace>
           </Flex>
         </Flex>
       ))}
-    </Center>
+    </>
   );
 };

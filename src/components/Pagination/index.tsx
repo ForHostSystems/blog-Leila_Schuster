@@ -13,6 +13,8 @@ export const Pagination = () => {
     } else {
       onChangePage(page + 1);
     }
+
+    window.scrollTo(0, 0);
   };
 
   return (

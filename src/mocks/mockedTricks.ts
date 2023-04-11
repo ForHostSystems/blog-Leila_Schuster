@@ -30,25 +30,25 @@ export const mockedTricsPreview = [
 
 export const mockedTrics = [
   {
-    cover: dicas_img2,
-    photo: dicas_img3,
+    imagem1_url: dicas_img2,
+    imagem2_url: dicas_img3,
     title: "Lifestyle",
-    subtitle: "Revista Regional",
+    revue: "Revista Regional",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non turpis lacinia, dapibus ex at, maximus metus. Sed pharetra efficitur luctus. Fusce convallis, lectus eget lobortis condimentum, orci risus tincidunt metus, vel cursus augue tellus eu neque. Quisque tincidunt risus sed.",
     edition: "Edição n° xxxx - 00/00",
-    logo: logoRegional,
-    pdf,
+    revue_imagem_url: logoRegional,
+    arquivo_url: pdf,
   },
   {
-    cover: dicas_img2,
-    photo: dicas_img4,
+    imagem1_url: dicas_img2,
+    imagem2_url: dicas_img4,
     title: "Go Lifestyle",
-    subtitle: "Revista Go Where",
+    revue: "Revista Go Where",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non turpis lacinia, dapibus ex at, maximus metus. Sed pharetra efficitur luctus. Fusce convallis, lectus eget lobortis condimentum, orci risus tincidunt metus, vel cursus augue tellus eu neque. Quisque tincidunt risus sed.",
     edition: "Edição n° xxxx - 00/00",
-    logo: logoGoWhere,
-    pdf,
+    revue_imagem_url: logoGoWhere,
+    arquivo_url: pdf,
   },
 ];

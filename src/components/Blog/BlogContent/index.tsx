@@ -2,10 +2,12 @@ import "quill/dist/quill.snow.css";
 import "./style.css";
 
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { AiFillTag } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 
+import { LoadingOverlay } from "@/components/LoadingOverlay";
 import { BlogModal } from "@/components/Modals/BlogModal";
 import { ModalDelete } from "@/components/Modals/ModalDelete";
 import { MostRead } from "@/components/MostRead";
@@ -21,11 +23,11 @@ interface BlogContentProps {
   blog: BlogListDTO;
   isFirst?: boolean;
   blogOnly?: boolean;
-  position?: number;
+  isPreview?: boolean;
 }
-export const BlogContent = ({ blog, isFirst = false, blogOnly = false, position }: BlogContentProps) => {
+export const BlogContent = ({ blog, isFirst = false, blogOnly = false, isPreview = false }: BlogContentProps) => {
   const { authenticated } = useAuth();
-  const { onDeletePost } = useBlog();
+  const { onDeletePost, isLoadingUpdate } = useBlog();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const { id, title, content, imagem1_url, imagem2_url, tags } = blog;
@@ -57,10 +59,17 @@ export const BlogContent = ({ blog, isFirst = false, blogOnly = false, position 
 
   return (
     <>
+      {blogOnly && (
+        <Helmet>
+          <title>{blog.title} | Leila Schuster</title>
+        </Helmet>
+      )}
+
+      {isLoadingUpdate && <LoadingOverlay />}
       {!blogOnly && <Divider w="100%" h="0.063rem" bg="black" mt={12} />}
 
       <Box w="100%" mt="2.5rem" mb={blogOnly ? "3rem" : 0} _last={{ mb: "3rem" }}>
-        {authenticated && (
+        {authenticated && !isPreview && (
           <ButtonGroup mb={4}>
             <IconButton aria-label="" icon={<MdDelete />} colorScheme="red" onClick={onOpenModalDelete} />
             <IconButton aria-label="" icon={<BiEdit />} colorScheme="green" onClick={onOpen} />
@@ -94,7 +103,7 @@ export const BlogContent = ({ blog, isFirst = false, blogOnly = false, position 
           </Flex>
         </Flex>
       </Box>
-      {position != undefined && <BlogModal post={blog} isOpen={isOpen} onClose={onClose} />}
+      <BlogModal post={blog} isOpen={isOpen} onClose={onClose} />
       <ModalDelete
         isOpen={isOpenModalDelete}
         onClose={onCloseModalDelete}
