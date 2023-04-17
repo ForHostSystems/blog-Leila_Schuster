@@ -14,8 +14,9 @@ const updateTimeline = async (props: ITimeLine): Promise<ITimeLine> => {
     if (key != "id" && typeof value != "number") {
       if (key.includes("imagem")) {
         formData.append("imagem", value);
+      } else {
+        formData.append(key, value);
       }
-      formData.append(key, value);
     }
   });
 
