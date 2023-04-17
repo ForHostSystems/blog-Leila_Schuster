@@ -1,16 +1,32 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { BlogContent } from "@/components/Blog/BlogContent";
 import { SeeMore } from "@/components/SeeMore";
-import { mockedBlogContent, MockedBlogContentProps } from "@/mocks/mockedBlogContent";
-import { Divider } from "@chakra-ui/react";
+import { useBlogView } from "@/hooks/useBlogView";
+import { mockedBlogContent } from "@/mocks/mockedBlogContent";
+import { Center, Divider, Spinner } from "@chakra-ui/react";
 
 export const Blog = () => {
-  const { state } = useLocation();
+  const { slug } = useParams();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { data, isLoading } = useBlogView(slug!);
+
+  if (isLoading) {
+    return (
+      <Center h="100vh">
+        <Spinner />
+      </Center>
+    );
+  }
+
+  if (!data) {
+    return <span>erro</span>;
+  }
+
   return (
     <>
-      <BlogContent content={state.blogContent as MockedBlogContentProps} blogOnly />
+      <BlogContent blog={data} blogOnly />
       <Divider w="100%" h="0.063rem" bg="black" mt={2.5} />
       <SeeMore data={mockedBlogContent} />
     </>

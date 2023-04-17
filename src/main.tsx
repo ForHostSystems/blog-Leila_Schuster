@@ -6,6 +6,7 @@ import "@fontsource/urbanist/900.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClientProvider } from "react-query";
 
 import { ChakraProvider } from "@chakra-ui/react";
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
-        <Router />
+        <HelmetProvider>
+          <Router />
+        </HelmetProvider>
       </ChakraProvider>
     </QueryClientProvider>
   </React.StrictMode>,

@@ -4,6 +4,8 @@ import { Document, Page, pdfjs } from "react-pdf";
 import { Box, BoxProps } from "@chakra-ui/react";
 
 import "./styles.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -30,7 +32,7 @@ export const PreviewPDF = ({ file, pages, pageNumber, ...props }: PreviewPDFProp
           borderRadius: "24px",
         },
       }}>
-      <Document file={file} options={{ workerSrc: "pdf.worker.js" }}>
+      <Document file={file}>
         {Array.from(new Array(pages), (el, index) => (
           <Page key={`page_${index + 1}`} pageNumber={pageNumber ?? index + 1} />
         ))}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { EditableText } from "@/components/EditableText";
-import { LabelForImage } from "@/components/LabelForImage";
+import { LabelForFile } from "@/components/LabelForFile";
 import { Title } from "@/components/Title";
 import { Flex, HStack, SimpleGrid, Stack } from "@chakra-ui/react";
 
@@ -20,26 +20,17 @@ export const BiographyPreview = ({
   descriptionValue,
   onChangeDescription,
   onSaveImage,
-  isCancel = false,
 }: BiographyPreviewProps) => {
   return (
     <SimpleGrid as="section" id="biografia" columns={2} spacing={5} w="100%" mt={10}>
       <Stack gap="10px">
-        <LabelForImage
-          image={imageTop}
-          labelRef="imageBioTop"
-          labelWidth="100%"
-          onSaveImage={onSaveImage}
-          imageKey="imagem2"
-          isCancel={isCancel}
-        />
-        <LabelForImage
-          image={imageBottom}
+        <LabelForFile file={imageTop} labelRef="imageBioTop" labelWidth="100%" onSaveImage={onSaveImage} imageKey="imagem2_url" />
+        <LabelForFile
+          file={imageBottom}
           labelRef="imageBioBottom"
           labelWidth="100%"
           onSaveImage={onSaveImage}
-          imageKey="imagem3"
-          isCancel={isCancel}
+          imageKey="imagem3_url"
         />
       </Stack>
       <HStack w="100%" align="start" justify="end">
@@ -64,7 +55,6 @@ export const BiographyPreview = ({
               fontWeight={500}
               handleChange={onChangeDescription}
               textValue={descriptionValue}
-              isCancel={isCancel}
             />
           </Flex>
         </Stack>

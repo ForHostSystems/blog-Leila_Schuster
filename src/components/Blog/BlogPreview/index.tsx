@@ -36,9 +36,10 @@ export const BlogPreview = () => {
             </Text>
 
             <CustomButton
-              onClick={() =>
-                navigate(`/blog/${index + 1}`, { state: { blogContent: mockedBlogContent[index != 2 ? index : 0] } })
-              }>
+            // onClick={() =>
+            //   navigate(`/blog/${index + 1}`, { state: { blogContent: mockedBlogContent[index != 2 ? index : 0] } })
+            // }
+            >
               LEIA AQUI
             </CustomButton>
           </VStack>

@@ -3,12 +3,11 @@ import React from "react";
 import logoHome from "@/assets/logo-home.png";
 import { useAuth } from "@/context/auth";
 import { usePresentationSetion } from "@/hooks/usePresentationSetion";
-import { PresentationSetionOutput } from "@/mocks/mockedPresentationSetion";
-import { Box, Button, Flex, Img, SimpleGrid, Stack, useDisclosure } from "@chakra-ui/react";
+import { PresentationSetionOutput } from "@/interfaces/presentationSetion";
+import { Box, Button, Flex, Img, SimpleGrid, Stack } from "@chakra-ui/react";
 
 import { BiographyPreview } from "../Biography/BiographyPreview";
-import { LabelForImage } from "../LabelForImage";
-import { PresentationSetionModal } from "../Modals/PresentationSetionModal";
+import { LabelForFile } from "../LabelForFile";
 import { Navigation } from "../Navigation";
 
 interface PresentationSetionProps {
@@ -17,26 +16,18 @@ interface PresentationSetionProps {
 
 export const PresentationSetion = ({ presententionSetionContent }: PresentationSetionProps) => {
   const { authenticated } = useAuth();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { sendData, resetValues, handleChangeImage, handleChangeDescription, isCancel } =
-    usePresentationSetion(presententionSetionContent);
-  const { description, imagem1, imagem2, imagem3 } = presententionSetionContent;
-
-  const handleConfirmModal = () => {
-    resetValues();
-    onClose();
-  };
+  const { sendData, handleChangeImage, handleChangeDescription, isLoading } = usePresentationSetion(presententionSetionContent);
+  const { description, imagem1_url, imagem2_url, imagem3_url } = presententionSetionContent;
 
   return (
     <Flex direction="column" border={authenticated ? "1px dashed #ccc" : ""} borderRadius={4}>
       <SimpleGrid id="home" columns={2} spacing={5} w="100%">
-        <LabelForImage
+        <LabelForFile
           labelRef="bannerHome"
           labelWidth="100%"
-          image={imagem1}
+          file={imagem1_url}
           onSaveImage={handleChangeImage}
-          imageKey="imagem1"
-          isCancel={isCancel}
+          imageKey="imagem1_url"
         />
         <Stack h="100%" direction="column" justify="space-between" alignItems="center" pos="relative">
           <Navigation />
@@ -45,26 +36,20 @@ export const PresentationSetion = ({ presententionSetionContent }: PresentationS
         </Stack>
       </SimpleGrid>
       <BiographyPreview
-        imageTop={imagem2}
-        imageBottom={imagem3}
+        imageTop={imagem2_url}
+        imageBottom={imagem3_url}
         descriptionValue={description}
         onChangeDescription={handleChangeDescription}
         onSaveImage={handleChangeImage}
-        isCancel={isCancel}
       />
 
       {authenticated && (
-        <Flex alignSelf={{ sm: "center", lg: "start" }} gap={5}>
-          <Button size={{ md: "md", xl: "lg" }} colorScheme="gray" onClick={onOpen}>
-            Cancelar
-          </Button>
-          <Button size={{ md: "md", xl: "lg" }} colorScheme="green" onClick={() => sendData()}>
+        <Box>
+          <Button size={{ md: "md", xl: "lg" }} colorScheme="green" isLoading={isLoading} onClick={() => sendData()}>
             Salvar
           </Button>
-        </Flex>
+        </Box>
       )}
-
-      <PresentationSetionModal isOpen={isOpen} onClose={onClose} onConfirm={handleConfirmModal} />
     </Flex>
   );
 };

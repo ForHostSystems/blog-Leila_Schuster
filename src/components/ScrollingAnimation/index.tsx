@@ -18,7 +18,7 @@ export const ScrollingAnimation = () => {
       <Flex w="calc(250px * 8)" animation={`${slideAnimation} 5s linear infinite`}>
         {mockedPartners.map((value, index) => (
           <HStack w="250px" p="10px" key={index}>
-            <Img w="100%" src={value} />
+            <Img w="100%" src={value.imagem_url} />
           </HStack>
         ))}
       </Flex>

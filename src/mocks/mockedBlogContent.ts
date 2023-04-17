@@ -11,21 +11,6 @@ import image7 from "../assets/blog7.jpg";
 import image8 from "../assets/blog8.jpg";
 import image9 from "../assets/blog9.jpg";
 
-export interface MockedBlogContentProps {
-  id: string;
-  date: string;
-  title: string;
-  images: TypeImageBlog[];
-  description: string;
-  tags: string[];
-}
-
-export interface TypeImageBlog {
-  retrate: boolean;
-  image: string;
-  legend: string;
-}
-
 export const mockedBlogContent = [
   {
     id: "1",
@@ -92,5 +77,3 @@ export const mockedBlogContent = [
     tags: ["Lorem", "dolor", "amet", "adipiscing", "elit"],
   },
 ];
-
-export type BlogContentDTO = typeof mockedBlogContent;
