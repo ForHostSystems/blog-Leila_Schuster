@@ -39,7 +39,7 @@ export const LabelForFile = ({
   const onChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target?.files != null) {
       const fileSize = Math.round(e.target.files[0].size / 1024 / 1024);
-      if (fileSize >= 5) {
+      if (fileSize >= 5 && accept != "application/pdf") {
         toast({
           title: "ATENÇÂO!",
           description: "O arquivo não pode exceder o tamanho de 5mb!",

@@ -19,7 +19,6 @@ const getBlogContent = async (page: number): Promise<BlogListDTO[]> => {
 };
 
 const addNewPost = async (post: IBlog): Promise<BlogListDTO> => {
-  console.log(post);
   const formData = new FormData();
   formData.append("home_id", "1");
   Object.entries(post).forEach(([key, value]) => {

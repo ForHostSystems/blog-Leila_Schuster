@@ -1,15 +1,15 @@
-import React, { ChangeEvent, KeyboardEvent, memo, useEffect, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
-import { BiImage } from "react-icons/bi";
 
 import { BlogContent } from "@/components/Blog/BlogContent";
 import Editor from "@/components/Editor";
+import { ImageLabel } from "@/components/ImageLabel";
+import { Textfield } from "@/components/Textfield";
 import { useBlog } from "@/context/blog";
 import { BlogListDTO } from "@/interfaces/blog";
 import { IBlog } from "@/services/Blog";
 import { theme } from "@/styles/theme";
-import { convertToUrl } from "@/utils/convertToUrl";
-import { Box, Flex, FormLabel, Heading, HStack, IconButton, Img, Input, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack, IconButton, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
 
 import { BaseModal } from "../BaseModal";
 
@@ -18,35 +18,6 @@ interface BlogModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-interface ImageLabelProps {
-  previewFile: File | string | null;
-  image: "image1" | "image2";
-  onChangeImage: (e: ChangeEvent<HTMLInputElement>, image: "image1" | "image2") => void;
-}
-
-const ImageLabel = ({ previewFile, image, onChangeImage }: ImageLabelProps) => {
-  return (
-    <FormLabel
-      as="label"
-      w="48%"
-      border="1px dashed #777"
-      htmlFor={image}
-      cursor="pointer"
-      display="flex"
-      justifyContent="center"
-      alignItems="center">
-      {previewFile != null ? (
-        <Img w="100%" cursor="pointer" objectFit="cover" alt="" src={convertToUrl(previewFile)} />
-      ) : (
-        <BiImage size="7rem" color="gray" />
-      )}
-      <input id={image} type="file" accept="image/*" hidden onChange={(e) => onChangeImage(e, image)} />
-    </FormLabel>
-  );
-};
-
-memo(ImageLabel);
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 type PostFields = {
@@ -71,7 +42,7 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
   const [tag, setTag] = useState("");
   const [isPreview, setIsPreview] = useState(false);
 
-  const onChangeImage = (e: ChangeEvent<HTMLInputElement>, image: "image1" | "image2") => {
+  const onChangeImage = (e: ChangeEvent<HTMLInputElement>, image: string) => {
     if (e.target?.files != null) {
       const file = e.target.files[0];
       if (image == "image1") {
@@ -164,11 +135,11 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
         <>
           <Heading>Imagens de capa:</Heading>
           <Flex gap="2.5rem" mt={4}>
-            <ImageLabel previewFile={fields.imagem1_url} image="image1" onChangeImage={onChangeImage} key="image1" />
-            <ImageLabel previewFile={fields.imagem2_url} image="image2" onChangeImage={onChangeImage} key="image2" />
+            <ImageLabel w="48%" previewFile={fields.imagem1_url} htmlFor="image1" onChangeImage={onChangeImage} key="image1" />
+            <ImageLabel w="48%" previewFile={fields.imagem2_url} htmlFor="image2" onChangeImage={onChangeImage} key="image2" />
           </Flex>
           <Heading my={4}>Título do POST:</Heading>
-          <Input
+          <Textfield
             type="text"
             name="title"
             value={fields.title}
@@ -180,16 +151,7 @@ export const BlogModal = ({ post = null, isOpen, onClose }: BlogModalProps) => {
           <Editor editorHtml={fields.content} handleChange={handleChangeContent} />
           <Heading my={4}>Tags:</Heading>
           <Flex direction="column" align="end" gap={2}>
-            <Input
-              type="text"
-              name="tags"
-              colorScheme="orange"
-              value={tag}
-              onChange={(e) => setTag(e.target.value)}
-              onKeyDown={onKeyPress}
-              borderColor="blackAlpha.300"
-              _hover={{ borderColor: "blackAlpha.400" }}
-            />
+            <Textfield type="text" name="tags" value={tag} onChange={(e) => setTag(e.target.value)} onKeyDown={onKeyPress} />
             <IconButton aria-label="" icon={<AiOutlineCheck color="green" />} width="fit-content" onClick={addTags} />
           </Flex>
           <HStack wrap="wrap" gap={2}>
