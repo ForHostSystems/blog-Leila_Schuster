@@ -25,7 +25,7 @@ export const Pagination = () => {
           Página anterior
         </Text>
       </Flex>
-      <Flex as={Button} href="#" align="center" mr="0.313rem" variant="unstyled" onClick={() => handleChangePage("next")}>
+      <Flex as={Button} align="center" mr="0.313rem" variant="unstyled" onClick={() => handleChangePage("next")}>
         <Text fontSize="1rem" lineHeight="1rem" fontWeight={900} textDecoration="none !important">
           Próxima página
         </Text>

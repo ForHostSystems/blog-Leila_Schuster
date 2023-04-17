@@ -61,7 +61,7 @@ export const TimelineModal = ({ isOpen, onClose, moment = null, isDelete = false
         sendData(moment.position);
         onCloseModal();
       } else {
-        if (fields.year && fields.description && typeof previewFile == "object") {
+        if (fields.year && fields.description && typeof previewFile == "object" && previewFile != null) {
           const body = {
             ...fields,
             imagem_url: previewFile as File,

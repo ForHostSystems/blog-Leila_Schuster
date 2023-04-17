@@ -1,11 +1,10 @@
 import React from "react";
 import ReactQuill, { Quill } from "react-quill";
 
-import BlotFormatter from "quill-blot-formatter";
+import BlotFormatter from "quill-blot-formatter/dist/BlotFormatter";
 
 import "quill/dist/quill.snow.css";
 
-// Quill.register("modules/imageResize", ImageResize);
 Quill.register("modules/blotFormatter", BlotFormatter);
 
 interface EditorProps {
