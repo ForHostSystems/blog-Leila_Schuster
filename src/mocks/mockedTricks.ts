@@ -30,6 +30,7 @@ export const mockedTricsPreview = [
 
 export const mockedTrics = [
   {
+    id: 1,
     imagem1_url: dicas_img2,
     imagem2_url: dicas_img3,
     title: "Lifestyle",
@@ -41,6 +42,7 @@ export const mockedTrics = [
     arquivo_url: pdf,
   },
   {
+    id: 2,
     imagem1_url: dicas_img2,
     imagem2_url: dicas_img4,
     title: "Go Lifestyle",

@@ -62,6 +62,7 @@ export const EditableText = ({
           <TextareaAutoResize
             maxW={props.maxW}
             minW={props.minW}
+            alignSelf={props.alignSelf}
             mt={props.mt}
             lineHeight={props.lineHeight}
             color={props.color}

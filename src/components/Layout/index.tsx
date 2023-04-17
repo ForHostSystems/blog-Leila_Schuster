@@ -5,6 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { BiographyProvider } from "@/context/biografia";
 import { BlogProvider } from "@/context/blog";
 import { HomeProvider } from "@/context/home";
+import { TricksProvider } from "@/context/tricks";
 import { Home } from "@/pages/Home";
 import { theme } from "@/styles/theme";
 import { Box, Flex } from "@chakra-ui/react";
@@ -27,6 +28,7 @@ interface ProviderRenderType {
 
 const providerToRender: ProviderRenderType = {
   "/biografia": BiographyProvider,
+  "/dicas": TricksProvider,
 };
 
 export const Layout = () => {
